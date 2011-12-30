@@ -34,8 +34,6 @@
         // Initialization {{{
 
         // Sanitize some options {{{
-        var obj = obj, opt = opt;
-
         if (typeof(obj) !== 'object') obj = $(obj)[0];
         if (typeof(opt) !== 'object') opt = { };
 
@@ -123,7 +121,7 @@
                     position: 'relative',
                     backgroundColor: options.bgColor
                 }).insertAfter($origimg).append($img);
-        ;
+
 
         if (options.addClass) $div.addClass(options.addClass);
         //$img.wrap($div);
@@ -132,7 +130,7 @@
             .attr('src', $img.attr('src'))
             .css('position', 'absolute')
             .width(boundx).height(boundy)
-            ;
+
         /*}}}*/
         var $img_holder = $('<div />')/*{{{*/
             .width(pct(100)).height(pct(100))
@@ -142,7 +140,7 @@
                 overflow: 'hidden'
             })
             .append($img2)
-            ;
+
         /*}}}*/
         var $hdl_holder = $('<div />')/*{{{*/
             .width(pct(100)).height(pct(100))
@@ -155,7 +153,7 @@
             })
             .insertBefore($img)
             .append($img_holder, $hdl_holder)
-            ;
+
         /*}}}*/
 
         var bound = options.boundary;
@@ -188,7 +186,6 @@
                 y2 = y1 = pos[1];
             }
 
-            ;
             /*}}}*/
             function setCurrent(pos)/*{{{*/ {
                 var pos = rebound(pos);
@@ -198,13 +195,11 @@
                 y2 = pos[1];
             }
 
-            ;
             /*}}}*/
             function getOffset()/*{{{*/ {
                 return [ ox, oy ];
             }
 
-            ;
             /*}}}*/
             function moveOffset(offset)/*{{{*/ {
                 var ox = offset[0], oy = offset[1];
@@ -221,7 +216,6 @@
                 y2 += oy;
             }
 
-            ;
             /*}}}*/
             function getCorner(ord)/*{{{*/ {
                 var c = getFixed();
@@ -237,7 +231,6 @@
                 }
             }
 
-            ;
             /*}}}*/
             function getFixed()/*{{{*/ {
                 if (!options.aspectRatio) return getRect();
@@ -253,7 +246,7 @@
                     rha = Math.abs(rh),
                     real_ratio = rwa / rha,
                     xx, yy
-                    ;
+
                 if (max_x == 0) {
                     max_x = boundx * 10
                 }
@@ -336,7 +329,6 @@
                 return last = makeObj(flipCoords(x1, y1, xx, yy));
             }
 
-            ;
             /*}}}*/
             function rebound(p)/*{{{*/ {
                 if (p[0] < 0) p[0] = 0;
@@ -348,7 +340,6 @@
                 return [ p[0], p[1] ];
             }
 
-            ;
             /*}}}*/
             function flipCoords(x1, y1, x2, y2)/*{{{*/ {
                 var xa = x1, xb = x2, ya = y1, yb = y2;
@@ -363,7 +354,6 @@
                 return [ Math.round(xa), Math.round(ya), Math.round(xb), Math.round(yb) ];
             }
 
-            ;
             /*}}}*/
             function getRect()/*{{{*/ {
                 var xsize = x2 - x1;
@@ -419,14 +409,12 @@
                 return makeObj(flipCoords(x1, y1, x2, y2));
             }
 
-            ;
             /*}}}*/
             function makeObj(a)/*{{{*/ {
                 return { x: a[0], y: a[1], x2: a[2], y2: a[3],
                     w: a[2] - a[0], h: a[3] - a[1] };
             }
 
-            ;
             /*}}}*/
 
             return {
@@ -487,7 +475,6 @@
                 return jq;
             }
 
-            ;
             /*}}}*/
             function dragDiv(ord, zi)/*{{{*/ {
                 var jq = $('<div />')
@@ -497,12 +484,11 @@
                         position: 'absolute',
                         zIndex: zi
                     })
-                    ;
+
                 $hdl_holder.append(jq);
                 return jq;
             }
 
-            ;
             /*}}}*/
             function insertHandle(ord)/*{{{*/ {
                 return dragDiv(ord, hdep++)
@@ -510,7 +496,6 @@
                     .addClass(cssClass('handle'));
             }
 
-            ;
             /*}}}*/
             function insertDragbar(ord)/*{{{*/ {
                 var s = options.handleSize,
@@ -533,13 +518,11 @@
                     .css({ top: px(-t + 1), left: px(-l + 1)});
             }
 
-            ;
             /*}}}*/
             function createHandles(li)/*{{{*/ {
                 for (i in li) handle[li[i]] = insertHandle(li[i]);
             }
 
-            ;
             /*}}}*/
             function moveHandles(c)/*{{{*/ {
                 var midvert = Math.round((c.h / 2) - hhs),
@@ -565,20 +548,17 @@
                 handle.r.css({ left: px(east) });
             }
 
-            ;
             /*}}}*/
             function moveto(x, y)/*{{{*/ {
                 $img2.css({ top: px(-y), left: px(-x) });
                 $sel.css({ top: px(y), left: px(x) });
             }
 
-            ;
             /*}}}*/
             function resize(w, h)/*{{{*/ {
                 $sel.width(w).height(h);
             }
 
-            ;
             /*}}}*/
             function refresh()/*{{{*/ {
                 var c = Coords.getFixed();
@@ -589,7 +569,6 @@
                 updateVisible();
             }
 
-            ;
             /*}}}*/
 
             // Internal Methods
@@ -597,7 +576,6 @@
                 if (awake) return update();
             }
 
-            ;
             /*}}}*/
             function update()/*{{{*/ {
                 var c = Coords.getFixed();
@@ -617,7 +595,6 @@
                 options.onChange(unscale(c));
             }
 
-            ;
             /*}}}*/
             function show()/*{{{*/ {
                 $sel.show();
@@ -625,7 +602,6 @@
                 awake = true;
             }
 
-            ;
             /*}}}*/
             function release()/*{{{*/ {
                 disableHandles();
@@ -634,17 +610,15 @@
                 awake = false;
             }
 
-            ;
             /*}}}*/
-            function showHandles()//{{{ {
+            function showHandles()/*{{{*/ {
                 if (seehandles) {
                     moveHandles(Coords.getFixed());
                     $hdl_holder.show();
                 }
             }
 
-            ;
-            //}}}
+            /*}}}*/
             function enableHandles()/*{{{*/ {
                 seehandles = true;
                 if (options.allowResize) {
@@ -654,27 +628,23 @@
                 }
             }
 
-            ;
             /*}}}*/
             function disableHandles()/*{{{*/ {
                 seehandles = false;
                 $hdl_holder.hide();
             }
 
-            ;
             /*}}}*/
             function animMode(v)/*{{{*/ {
                 (animating = v) ? disableHandles() : enableHandles();
             }
 
-            ;
             /*}}}*/
             function done()/*{{{*/ {
                 animMode(false);
                 refresh();
             }
 
-            ;
             /*}}}*/
 
             var $track = newTracker().mousedown(createDragger('move'))
@@ -714,7 +684,7 @@
                     .mousemove(trackMove)
                     .mouseup(trackUp)
                     .mouseout(trackUp)
-                    ;
+
             }
 
             function toFront()/*{{{*/ {
@@ -723,7 +693,7 @@
                     $(document)
                         .mousemove(trackMove)
                         .mouseup(trackUp)
-                        ;
+
                 }
             }
 
@@ -734,7 +704,7 @@
                     $(document)
                         .unbind('mousemove', trackMove)
                         .unbind('mouseup', trackUp)
-                        ;
+
                 }
             }
 
@@ -743,7 +713,6 @@
                 onMove(mouseAbs(e));
             }
 
-            ;
             /*}}}*/
             function trackUp(e)/*{{{*/ {
                 e.preventDefault();
@@ -764,7 +733,6 @@
                 return false;
             }
 
-            ;
             /*}}}*/
 
             function activateHandlers(move, done)/* {{{ */ {
@@ -775,14 +743,12 @@
                 return false;
             }
 
-            ;
             /* }}} */
 
             function setCursor(t) {
                 $trk.css('cursor', t);
             }
 
-            ;
 
             $img.before($trk);
             return {
@@ -803,7 +769,7 @@
                         overflow: 'hidden'
                     })
                     .append($keymgr)
-                ;
+
 
             function watchKeys()/*{{{*/ {
                 if (options.keySupport) {
@@ -812,25 +778,22 @@
                 }
             }
 
-            ;
             /*}}}*/
             function onBlur(e)/*{{{*/ {
                 $keymgr.hide();
             }
 
-            ;
             /*}}}*/
             function doNudge(e, x, y)/*{{{*/ {
                 if (options.allowMove) {
                     Coords.moveOffset([x,y]);
                     Selection.updateVisible();
                 }
-                ;
+
                 e.preventDefault();
                 e.stopPropagation();
             }
 
-            ;
             /*}}}*/
             function parseKey(e)/*{{{*/ {
                 if (e.ctrlKey) return true;
@@ -861,7 +824,6 @@
                 return e;
             }
 
-            ;
             /*}}}*/
 
             if (options.keySupport) $keywrap.insertBefore($img);
@@ -878,30 +840,25 @@
             return '' + parseInt(n) + 'px';
         }
 
-        ;
         function pct(n) {
             return '' + parseInt(n) + '%';
         }
 
-        ;
         function cssClass(cl) {
             return options.baseClass + '-' + cl;
         }
 
-        ;
         function getPos(obj)/*{{{*/ {
             // Updated in v0.9.4 to use built-in dimensions plugin
             var pos = $(obj).offset();
             return [ pos.left, pos.top ];
         }
 
-        ;
         /*}}}*/
         function mouseAbs(e)/*{{{*/ {
             return [ (e.pageX - docOffset[0]), (e.pageY - docOffset[1]) ];
         }
 
-        ;
         /*}}}*/
         function myCursor(type)/*{{{*/ {
             if (type != lastcurs) {
@@ -911,7 +868,6 @@
             }
         }
 
-        ;
         /*}}}*/
         function startDragMode(mode, pos)/*{{{*/ {
             docOffset = getPos($img);
@@ -930,7 +886,6 @@
             Tracker.activateHandlers(dragmodeHandler(mode, fc), doneSelect);
         }
 
-        ;
         /*}}}*/
         function dragmodeHandler(mode, f)/*{{{*/ {
             return function(pos) {
@@ -967,7 +922,6 @@
             };
         }
 
-        ;
         /*}}}*/
         function createMover(pos)/*{{{*/ {
             var lloc = pos;
@@ -981,7 +935,6 @@
             };
         }
 
-        ;
         /*}}}*/
         function oppLockCorner(ord)/*{{{*/ {
             switch (ord) {
@@ -1002,10 +955,9 @@
                 case 'sw':
                     return 'ne';
             }
-            ;
+
         }
 
-        ;
         /*}}}*/
         function createDragger(ord)/*{{{*/ {
             return function(e) {
@@ -1019,7 +971,6 @@
             };
         }
 
-        ;
         /*}}}*/
         function presize($obj, w, h)/*{{{*/ {
             var nw = $obj.width(), nh = $obj.height();
@@ -1036,7 +987,6 @@
             $obj.width(nw).height(nh);
         }
 
-        ;
         /*}}}*/
         function unscale(c)/*{{{*/ {
             return {
@@ -1046,7 +996,6 @@
             };
         }
 
-        ;
         /*}}}*/
         function doneSelect(pos)/*{{{*/ {
             var c = Coords.getFixed();
@@ -1060,7 +1009,6 @@
             Tracker.setCursor(options.allowSelect ? 'crosshair' : 'default');
         }
 
-        ;
         /*}}}*/
         function newSelection(e)/*{{{*/ {
             if (options.disabled) return false;
@@ -1080,14 +1028,12 @@
             return false;
         }
 
-        ;
         /*}}}*/
         function selectDrag(pos)/*{{{*/ {
             Coords.setCurrent(pos);
             Selection.update();
         }
 
-        ;
         /*}}}*/
         function newTracker() {
             var trk = $('<div></div>').addClass(cssClass('tracker'));
@@ -1095,7 +1041,6 @@
             return trk;
         }
 
-        ;
 
         // }}}
         // API methods {{{
@@ -1148,26 +1093,22 @@
                 window.setTimeout(animator, interv);
             }
 
-            ;
 
             animateStart();
         }
 
-        ;
         /*}}}*/
-        function setSelect(rect)//{{{ {
+        function setSelect(rect)/*{{{*/ {
             setSelectRaw([rect[0] / xscale,rect[1] / yscale,rect[2] / xscale,rect[3] / yscale]);
         }
 
-        ;
-        //}}}
+        /*}}}*/
         function setSelectRaw(l) /*{{{*/ {
             Coords.setPressed([l[0],l[1]]);
             Coords.setCurrent([l[2],l[3]]);
             Selection.update();
         }
 
-        ;
         /*}}}*/
         function setOptions(opt)/*{{{*/ {
             if (typeof(opt) != 'object') opt = { };
@@ -1183,61 +1124,52 @@
 
         }
 
-        ;
         /*}}}*/
         function tellSelect()/*{{{*/ {
             return unscale(Coords.getFixed());
         }
 
-        ;
         /*}}}*/
         function tellScaled()/*{{{*/ {
             return Coords.getFixed();
         }
 
-        ;
         /*}}}*/
         function setOptionsNew(opt)/*{{{*/ {
             setOptions(opt);
             interfaceUpdate();
         }
 
-        ;
         /*}}}*/
-        function disableCrop()//{{{ {
+        function disableCrop()/*{{{*/ {
             options.disabled = true;
             Selection.disableHandles();
             Selection.setCursor('default');
             Tracker.setCursor('default');
         }
 
-        ;
-        //}}}
-        function enableCrop()//{{{ {
+        /*}}}*/
+        function enableCrop()/*{{{*/ {
             options.disabled = false;
             interfaceUpdate();
         }
 
-        ;
-        //}}}
-        function cancelCrop()//{{{ {
+        /*}}}*/
+        function cancelCrop()/*{{{*/ {
             Selection.done();
             Tracker.activateHandlers(null, null);
         }
 
-        ;
-        //}}}
-        function destroy()//{{{ {
+        /*}}}*/
+        function destroy()/*{{{*/ {
             $div.remove();
             $origimg.show();
         }
 
-        ;
-        //}}}
-
-        function interfaceUpdate(alt)//{{{
-            // This method tweaks the interface based on options object.
-            // Called when options are changed and at end of initialization. {
+        /*}}}*/
+        // This method tweaks the interface based on options object.
+        // Called when options are changed and at end of initialization.
+        function interfaceUpdate(alt)/*{{{*/ {
             options.allowResize ?
                 alt ? Selection.enableOnly() : Selection.enableHandles() :
                 Selection.disableHandles();
@@ -1271,8 +1203,7 @@
             Selection.refresh();
         }
 
-        ;
-        //}}}
+        /*}}}*/
 
         // }}}
 
@@ -1318,7 +1249,6 @@
             img.src = loadsrc;
         }
 
-        ;
         /*}}}*/
         if (typeof(options) !== 'object') options = { };
 
