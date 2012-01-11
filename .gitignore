@@ -5,6 +5,8 @@ ui/accesskeyhelper/demo/target
 ui/accesskeyhelper/ui/target
 ui/carousel/demo/target
 ui/carousel/ui/target
+ui/colorpicker/demo/target
+ui/colorpicker/ui/target
 ui/contextmenu/demo/target
 ui/contextmenu/ui/target
 ui/dashboard/demo/target
@@ -17,6 +19,8 @@ ui/lightbox/demo/target
 ui/lightbox/ui/target
 ui/notify/demo/target
 ui/notify/ui/target
+ui/rating/demo/target
+ui/rating/ui/target
 ui/schedule/demo/target
 ui/schedule/ui/target
 ui/visualsearch/demo/target
