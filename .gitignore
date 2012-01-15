@@ -23,6 +23,8 @@ ui/rating/demo/target
 ui/rating/ui/target
 ui/schedule/demo/target
 ui/schedule/ui/target
+ui/syntaxhighlighter/demo/target
+ui/syntaxhighlighter/ui/target
 ui/visualsearch/demo/target
 ui/visualsearch/ui/target
 ui/watermark/demo/target
