@@ -30,6 +30,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 import java.io.*;
+import java.net.URL;
 
 @JsfRenderer(family = AbstractOutputFile.COMPONENT_FAMILY, type = OutputFileRenderer.RENDERER_TYPE)
 public class OutputFileRenderer extends RendererBase {
@@ -52,7 +53,12 @@ public class OutputFileRenderer extends RendererBase {
         } else if (value instanceof InputStream) {
             contents = getContents((InputStream) value);
         } else if (value != null) {
-            contents = getContents(context.getExternalContext().getResource(value.toString()).openStream());
+            String resourcePath = value.toString();
+            URL resource = context.getExternalContext().getResource(resourcePath);
+            if (resource == null) {
+                throw new FileNotFoundException(resourcePath);
+            }
+            contents = getContents(resource.openStream());
         }
         if (contents != null) {
             if (outputFile.isEscape()) {
