@@ -225,7 +225,7 @@ public class SyntaxHighlighterRenderer extends RendererBase implements Component
             for (Object element : ((Collection) highlight)) {
                 list.add(Integer.parseInt(element.toString()));
             }
-        } else {
+        } else if (highlight != null) {
             StringTokenizer stringTokenizer = new StringTokenizer(highlight.toString(), ",");
             while (stringTokenizer.hasMoreTokens()) {
                 list.add(Integer.parseInt(stringTokenizer.nextToken()));
