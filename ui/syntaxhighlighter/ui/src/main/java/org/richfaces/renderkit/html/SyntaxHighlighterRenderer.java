@@ -206,15 +206,17 @@ public class SyntaxHighlighterRenderer extends RendererBase implements Component
         addOptionIfSetAndNotDefault("smartTabs", syntaxhighlighter.isSmartTabs(), options);
         addOptionIfSetAndNotDefault("stripBrs", syntaxhighlighter.isStripBrs(), options);
         addOptionIfSetAndNotDefault("toolbar", syntaxhighlighter.isToolbar(), options);
-        addOptionIfSetAndNotDefault("copyToClipboardConfirmationLabel", syntaxhighlighter.getCopyToClipboardConfirmationLabel(), options);
-        addOptionIfSetAndNotDefault("copyToClipboardLabel", syntaxhighlighter.getCopyToClipboardLabel(), options);
-        addOptionIfSetAndNotDefault("expandSourceLabel", syntaxhighlighter.getExpandSourceLabel(), options);
         addOptionIfSetAndNotDefault("firstLine", syntaxhighlighter.getFirstLine(), options);
-        addOptionIfSetAndNotDefault("helpLabel", syntaxhighlighter.getHelpLabel(), options);
-        addOptionIfSetAndNotDefault("highlight", getRenderableHighlightValue(syntaxhighlighter), options);
-        addOptionIfSetAndNotDefault("printLabel", syntaxhighlighter.getPrintLabel(), options);
         addOptionIfSetAndNotDefault("tabSize", syntaxhighlighter.getTabSize(), options);
-        addOptionIfSetAndNotDefault("viewSourceLabel", syntaxhighlighter.getViewSourceLabel(), options);
+        Map<String, Object> strings = new HashMap<String, Object>();
+        addOptionIfSetAndNotDefault("copyToClipboardConfirmationLabel", syntaxhighlighter.getCopyToClipboardConfirmationLabel(), strings);
+        addOptionIfSetAndNotDefault("copyToClipboardLabel", syntaxhighlighter.getCopyToClipboardLabel(), strings);
+        addOptionIfSetAndNotDefault("expandSourceLabel", syntaxhighlighter.getExpandSourceLabel(), strings);
+        addOptionIfSetAndNotDefault("helpLabel", syntaxhighlighter.getHelpLabel(), strings);
+        addOptionIfSetAndNotDefault("highlight", getRenderableHighlightValue(syntaxhighlighter), strings);
+        addOptionIfSetAndNotDefault("printLabel", syntaxhighlighter.getPrintLabel(), strings);
+        addOptionIfSetAndNotDefault("viewSourceLabel", syntaxhighlighter.getViewSourceLabel(), strings);
+        addOptionIfSetAndNotDefault("strings", strings, options);
         return options;
     }
 

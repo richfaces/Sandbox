@@ -50,6 +50,10 @@
             <artifactId>syntaxhighlighter-ui</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.richfaces.sandbox.ui.outputFile</groupId>
+            <artifactId>outputFile-ui</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.sun.faces</groupId>
             <artifactId>jsf-api</artifactId>
             <scope>compile</scope>

@@ -26,7 +26,7 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:syntaxhighlighter="http://richfaces.org/sandbox/syntaxhighlighter" xmlns:rich="http://richfaces.org/rich"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:a4j="http://richfaces.org/a4j">
+      xmlns:a4j="http://richfaces.org/a4j" xmlns:outputfile="http://richfaces.org/sandbox/outputfile">
 <h:head>
     <title>SyntaxHighlighter sample</title>
 
@@ -161,6 +161,10 @@
         <h:commandButton value="Submit"/>
 
     </h:form>
+
+    <syntaxhighlighter:syntaxhighlighter language="xml" collapsed="true">
+        <outputfile:outputFile value="/sample_1.xhtml"/>
+    </syntaxhighlighter:syntaxhighlighter>
 
 </h:body>
 </html>

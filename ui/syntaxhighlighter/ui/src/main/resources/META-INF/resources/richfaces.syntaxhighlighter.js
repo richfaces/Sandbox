@@ -24,6 +24,12 @@
 
 
     var propertyTranslation = {
+        'copyToClipboardConfirmationLabel':'copyToClipboardConfirmation',
+        'copyToClipboardLabel':'copyToClipboard',
+        'expandSourceLabel':'expandSource',
+        'helpLabel':'help',
+        'printLabel':'print',
+        'viewSourceLabel':'viewSource',
         'collapsed':'collapse',
         'language':'brush',
         'autoLinks':'auto-links',
@@ -51,6 +57,10 @@
      * @param componentId identifier of script component with code invoking this method
      */
     rf.ui.SyntaxHighlighter = function(componentId, options) {
+        var strings = options.strings || {};
+        for (var key in options.strings) {
+            SyntaxHighlighter.config.strings[propertyTranslation[key]] = options.strings[key];
+        }
         jQuery(function() {
             SyntaxHighlighter.highlight(translateProperties({}, options, propertyTranslation), jQuery(".rf-syn-cd", document.getElementById(componentId))[0]);
         });

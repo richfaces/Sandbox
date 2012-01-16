@@ -47,6 +47,12 @@
                 <version>${project.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.richfaces.sandbox.ui.outputFile</groupId>
+                <artifactId>outputFile-ui</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
