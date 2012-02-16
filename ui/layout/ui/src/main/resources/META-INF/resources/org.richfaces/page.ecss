@@ -1,0 +1,27 @@
+.rich-page-footer {
+	 clear:both;
+}
+.rich-page {
+	margin: auto;
+	text-align: left;
+	min-width: 750px;
+}
+.rich-page-sidebar {
+	position: relative;
+}
+.rich-page-body {
+	position: static;
+}
+.rich-page-main  {
+	width: 100%;
+}
+.rich-page-content:after {
+	content: '.';
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.rich-page-content {
+	zoom: 1;
+}

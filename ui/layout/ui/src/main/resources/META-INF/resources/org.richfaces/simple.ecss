@@ -1,0 +1,93 @@
+body {
+    font-family: '#{richSkin.generalFamilyFont}';
+    margin: 0;
+    padding: 0;
+    background-color: #FFF;
+    background-repeat: repeat-x;
+}
+
+.rich-page {
+    font-size: '#{richSkin.generalSizeFont}';
+}
+
+
+.rich-page-header {
+    border-bottom: 1px solid;
+    border-bottom-color: '#{richSkin.generalBackgroundColor}';
+    background-color: '#{richSkin.headerGradientColor}';
+    min-height: 40px;
+    padding: 0 20px;
+    color: '#{richSkin.trimColor}';
+}
+.rich-page-subheader {
+    border-bottom: 1px solid;
+    border-bottom-color: '#{richSkin.generalBackgroundColor}';
+    background-color: '#{richSkin.headerGradientColor}';
+    padding: 0 20px;
+    color: '#{richSkin.trimColor}';
+}
+
+.rich-page-content {
+    background-color: '#{richSkin.generalBackgroundColor}';
+    border: 2px solid;
+    border-color: '#{richSkin.panelBorderColor}';
+}
+
+.rich-page-main {
+    border-top: 2px solid;
+    border-top-color: '#{richSkin.panelBorderColor}';
+}
+
+.rich-page-body {
+    vertical-align: top;
+    width: 100%;
+}
+
+.rich-page-footer {
+    border-top: 1px solid;
+    border-top-color: '#{richSkin.generalBackgroundColor}';
+    background-color: '#{richSkin.panelBorderColor}';
+    text-align: center;
+    padding: 20px 0;
+}
+
+.rich-page-sidebar {
+    vertical-align: top;
+}
+
+*.rich-page-sidebar, *.rich-page-body, *.rich-page-footer {
+        font-family: '#{richSkin.generalFamilyFont}';
+        color: '#{richSkin.generalTextColor}';
+        font-size: '#{richSkin.generalSizeFont}';
+}
+*.rich-page-header-content {
+        font-family: '#{richSkin.headerFamilyFont}';
+        color: '#{richSkin.headerTextColor}';
+        font-size: '#{richSkin.headerSizeFont}';
+}
+
+h1,h2,h3 {
+    font-family: '#{richSkin.headerFamilyFont}';
+    margin: 0;
+    color: '#{richSkin.headTextColor}';
+}
+h1 {
+    font-size: 333.4%;
+}
+h2 {
+    font-size: 197%;
+}
+p,ul,ol {
+    font-family: '#{richSkin.generalFamilyFont}';
+    margin-top: 0;
+    line-height: 240%;
+    color: '#{richSkin.controlTextColor}';
+}
+
+a:hover {
+    color: '#{richSkin.hoverLinkColor}';
+}
+
+a:visited {
+    color: '#{richSkin.visitedLinkColor}';
+}
