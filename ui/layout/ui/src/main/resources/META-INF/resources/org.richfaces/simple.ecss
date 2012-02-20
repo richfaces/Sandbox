@@ -12,6 +12,9 @@ body {
 
 
 .rich-page-header {
+    background-image: "url(#{resource['org.richfaces.images:pageHeaderGradient.png']})";
+    background-repeat: repeat-x;
+    background-position: top left;
     border-bottom: 1px solid;
     border-bottom-color: '#{richSkin.generalBackgroundColor}';
     background-color: '#{richSkin.headerGradientColor}';
@@ -44,6 +47,10 @@ body {
 }
 
 .rich-page-footer {
+color:red;
+    background-image: "url(#{resource['org.richfaces.images:pageFooterGradient.png']})";
+    background-repeat: repeat-x;
+    background-position: center left;
     border-top: 1px solid;
     border-top-color: '#{richSkin.generalBackgroundColor}';
     background-color: '#{richSkin.panelBorderColor}';
