@@ -26,7 +26,7 @@
 
     <groupId>org.richfaces.sandbox.ui.focus</groupId>
     <artifactId>focus-bom</artifactId>
-    <version>4.1.0-SNAPSHOT</version>
+    <version>4.1.0.Final</version>
     <name>Richfaces UI Components: focus bom</name>
     <packaging>pom</packaging>
 

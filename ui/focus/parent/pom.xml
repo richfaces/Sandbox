@@ -27,7 +27,7 @@
     <parent>
         <groupId>org.richfaces</groupId>
         <artifactId>richfaces-root-parent</artifactId>
-        <version>4.1.0-SNAPSHOT</version>
+        <version>4.1.0.Final</version>
     </parent>
 
     <groupId>org.richfaces.sandbox.ui.focus</groupId>
@@ -52,7 +52,7 @@
             <dependency>
                 <groupId>org.richfaces.cdk</groupId>
                 <artifactId>annotations</artifactId>
-                <version>4.1.0-SNAPSHOT</version>
+                <version>4.1.0.Final</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -64,7 +64,7 @@
                 <plugin>
                     <groupId>org.richfaces.cdk</groupId>
                     <artifactId>maven-cdk-plugin</artifactId>
-                    <version>4.1.0-SNAPSHOT</version>
+                    <version>4.1.0.Final</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
