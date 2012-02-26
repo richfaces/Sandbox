@@ -6,12 +6,12 @@ body {
     background-repeat: repeat-x;
 }
 
-.rich-page {
+.rf-pg {
     font-size: '#{richSkin.generalSizeFont}';
 }
 
 
-.rich-page-header {
+.rf-pg-hdr {
     background-image: "url(#{resource['org.richfaces.images:pageHeaderGradient.png']})";
     background-repeat: repeat-x;
     background-position: top left;
@@ -22,7 +22,7 @@ body {
     padding: 0 20px;
     color: '#{richSkin.trimColor}';
 }
-.rich-page-subheader {
+.rf-pg-shdr {
     border-bottom: 1px solid;
     border-bottom-color: '#{richSkin.generalBackgroundColor}';
     background-color: '#{richSkin.headerGradientColor}';
@@ -30,23 +30,23 @@ body {
     color: '#{richSkin.trimColor}';
 }
 
-.rich-page-content {
+.rf-pg-cnt {
     background-color: '#{richSkin.generalBackgroundColor}';
     border: 2px solid;
     border-color: '#{richSkin.panelBorderColor}';
 }
 
-.rich-page-main {
+.rf-pg-m {
     border-top: 2px solid;
     border-top-color: '#{richSkin.panelBorderColor}';
 }
 
-.rich-page-body {
+.rf-pg-bd {
     vertical-align: top;
     width: 100%;
 }
 
-.rich-page-footer {
+.rf-pg-ftr {
 color:red;
     background-image: "url(#{resource['org.richfaces.images:pageFooterGradient.png']})";
     background-repeat: repeat-x;
@@ -58,16 +58,16 @@ color:red;
     padding: 20px 0;
 }
 
-.rich-page-sidebar {
+.rf-pg-sb {
     vertical-align: top;
 }
 
-*.rich-page-sidebar, *.rich-page-body, *.rich-page-footer {
+*.rf-pg-sb, *.rf-pg-bd, *.rf-pg-ftr {
         font-family: '#{richSkin.generalFamilyFont}';
         color: '#{richSkin.generalTextColor}';
         font-size: '#{richSkin.generalSizeFont}';
 }
-*.rich-page-header-content {
+*.rf-pg-hdr-cnt {
         font-family: '#{richSkin.headerFamilyFont}';
         color: '#{richSkin.headerTextColor}';
         font-size: '#{richSkin.headerSizeFont}';

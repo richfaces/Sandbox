@@ -1,27 +1,27 @@
-.rich-page-footer {
+.rf-pg-ftr {
 	 clear:both;
 }
-.rich-page {
+.rf-pg {
 	margin: auto;
 	text-align: left;
 	min-width: 750px;
 }
-.rich-page-sidebar {
+.rf-pg-sb {
 	position: relative;
 }
-.rich-page-body {
+.rf-pg-bd {
 	position: static;
 }
-.rich-page-main  {
+.rf-pg-m  {
 	width: 100%;
 }
-.rich-page-content:after {
+.rf-pg-cnt:after {
 	content: '.';
 	display: block;
 	height: 0;
 	clear: both;
 	visibility: hidden;
 }
-.rich-page-content {
+.rf-pg-cnt {
 	zoom: 1;
 }

@@ -1,10 +1,10 @@
 package org.richfaces.renderkit.html.images;
 
-import org.richfaces.renderkit.html.BaseGradient;
+import org.richfaces.renderkit.html.Base2WayGradient;
 import org.richfaces.resource.DynamicUserResource;
 
 @DynamicUserResource
-public class PageFooterGradient extends BaseGradient {
+public class PageFooterGradient extends Base2WayGradient {
 // --------------------------- CONSTRUCTORS ---------------------------
 
     public PageFooterGradient() {

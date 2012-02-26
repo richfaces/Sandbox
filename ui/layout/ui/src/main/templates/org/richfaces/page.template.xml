@@ -20,46 +20,47 @@
                 <c:if test="#{this:hasTitle(facesContext,component)}">
                     <x:title>#{component.attributes['pageTitle']}</x:title>
                 </c:if>
-                <cdk:call expression="encodeHeadResources(facesContext)"/>
                 <cdk:call expression="themeStyle(facesContext,component)"/>
                 <cdk:call expression="themeScript(facesContext,component)"/>
+                <cdk:call expression="encodeHeadResources(facesContext)"/>
                 <cdk:call expression="pageStyle(facesContext,component)"/>
                 <cdk:call expression="insertFacet(&quot;pageHeader&quot;,facesContext,component)"/>
             </head>
             <!--TODO what we do with  passThroughWithExclusions="value,name,type,id"?-->
             <body cdk:passThroughWithExclusions="value,name,type,id"
                   oncontextmenu="#{component.attributes['oncontextmenu']}">
-                <div id="#{clientId}" class="rich-page #{component.attributes['pageClass']}"
+                <div id="#{clientId}" class="rf-pg #{component.attributes['pageClass']}"
                      style="#{component.attributes['pageStyle']}">
                     <c:if test="#{this:hasFacet(component,'header')}">
-                        <div id="#{clientId}:hd" class="rich-page-header #{component.attributes['headerClass']}">
-                            <div id="#{clientId}:hdc" class="rich-page-header-content">
+                        <div id="#{clientId}:hd" class="rf-pg-hdr #{component.attributes['headerClass']}">
+                            <div id="#{clientId}:hdc" class="rf-pg-hdr-cnt">
                                 <cdk:call expression="insertFacet(&quot;header&quot;,facesContext,component)"/>
                             </div>
                         </div>
                     </c:if>
                     <c:if test="#{this:hasFacet(component,'subheader')}">
-                        <div id="#{clientId}:shd" class="rich-page-subheader #{component.attributes['subheaderClass']}">
+                        <div id="#{clientId}:shd" class="rf-pg-shdr #{component.attributes['subheaderClass']}">
                             <cdk:call expression="insertFacet(&quot;subheader&quot;,facesContext,component)"/>
                         </div>
                     </c:if>
-                    <div id="#{clientId}:cnt" class="rich-page-content #{component.attributes['contentClass']}">
+                    <div id="#{clientId}:cnt" class="rf-pg-cnt #{component.attributes['contentClass']}">
                         <c:if test="#{this:hasFacet(component,'sidebar')}">
-                            <div class="rich-page-sidebar #{component.attributes['sidebarClass']}">
+                            <div class="rf-pg-sb #{component.attributes['sidebarClass']}">
                                 <cdk:call expression="insertFacet(&quot;sidebar&quot;,facesContext,component)"/>
                             </div>
                         </c:if>
                         <cdk:body>
-                            <div class="rich-page-main">
-                                <div class="rich-page-body #{component.attributes['bodyClass']}">
+                            <div class="rf-pg-m">
+                                <div class="rf-pg-bd #{component.attributes['bodyClass']}">
                                     <cdk:call expression="renderChildren(facesContext,component)"/>
                                 </div>
                             </div>
                         </cdk:body>
+                        <div style="clear:both"></div>
                     </div>
                     <c:if test="#{this:hasFacet(component,'footer')}">
-                        <div id="#{clientId}:ft" class="rich-page-footer #{component.attributes['footerClass']}">
-                            <div id="#{clientId}:ftc" class="rich-page-footer-content">
+                        <div id="#{clientId}:ft" class="rf-pg-ftr #{component.attributes['footerClass']}">
+                            <div id="#{clientId}:ftc" class="rf-pg-ftr-content">
                                 <cdk:call expression="insertFacet(&quot;footer&quot;,facesContext,component)"/>
                             </div>
                         </div>

@@ -127,23 +127,23 @@ public abstract class AbstractPageRenderer extends RendererBase {
             float nonIeWidth = (width.floatValue() / 13.0f);
             float ieWidth = (width.floatValue() / 13.333f);
             StringBuilder format = new StringBuilder(
-                    ".rich-page{margin:auto;text-align:left;");
+                    ".rf-pg{margin:auto;text-align:left;");
             format.append("width:").append(nonIeWidth).append("em;");
             format.append("*width:").append(ieWidth).append("em;\n");
             format.append("}\n");
             writer.write(format.toString());
         } else {
-            writer.write(".rich-page{margin:auto 10px;width:auto;}\n");
+            writer.write(".rf-pg{margin:auto 10px;width:auto;}\n");
         }
         // Calculate sidebar width
         if (component.getFacet("sidebar") != null) {
             LayoutPosition sidebarPosition = page.getSidebarPosition();
             if (LayoutPosition.right.equals(sidebarPosition)) {
                 writer
-                        .write(".rich-page-main{float:left;margin-right:-30em;}\n");
+                        .write(".rf-pg-m{float:left;margin-right:-30em;}\n");
             } else {
                 writer
-                        .write(".rich-page-main{float:right;margin-left:-30em;}\n");
+                        .write(".rf-pg-m{float:right;margin-left:-30em;}\n");
                 sidebarPosition = LayoutPosition.left;
             }
             Integer sidebarWidth = page.getSidebarWidth();
@@ -151,11 +151,11 @@ public abstract class AbstractPageRenderer extends RendererBase {
                 float nonIeWidth = (sidebarWidth.floatValue() / 13.0f);
                 float ieWidth = (sidebarWidth.floatValue() / 13.333f);
                 StringBuilder format = new StringBuilder(
-                        ".rich-page-sidebar{float:");
+                        ".rf-pg-sb{float:");
                 format.append(sidebarPosition).append(";");
                 format.append("width:").append(nonIeWidth).append("em;");
                 format.append("*width:").append(ieWidth).append("em;}\n");
-                format.append(".rich-page-body{margin-");
+                format.append(".rf-pg-bd{margin-");
                 format.append(sidebarPosition).append(":").append(nonIeWidth + 1.0f)
                         .append("em;");
                 format.append("*margin").append(sidebarPosition).append(":").append(
@@ -163,7 +163,7 @@ public abstract class AbstractPageRenderer extends RendererBase {
                 writer.write(format.toString());
             }
         } // Cleanup
-        writer.write(".rich-page-body{float:none;width:auto;}\n");
+        writer.write(".rf-pg-bd{float:none;width:auto;}\n");
         writer.endElement("style");
     }
 
