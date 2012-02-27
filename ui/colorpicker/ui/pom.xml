@@ -31,8 +31,9 @@
         <groupId>org.richfaces.sandbox.ui.colorpicker</groupId>
         <artifactId>colorpicker-parent</artifactId>
         <version>4.1.0-SNAPSHOT</version>
-        <relativePath>../parent/pom.xml</relativePath>
+        <relativePath>../pom.xml</relativePath>
     </parent>
+
     <artifactId>colorpicker-ui</artifactId>
     <name>Richfaces UI Components: colorpicker ui</name>
 
@@ -52,6 +53,7 @@
         <dependency>
             <groupId>org.richfaces.cdk</groupId>
             <artifactId>annotations</artifactId>
+            <version>${project.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -71,7 +73,7 @@
             <plugin>
                 <groupId>org.richfaces.cdk</groupId>
                 <artifactId>maven-cdk-plugin</artifactId>
-                <version>${org.richfaces.cdk.version}</version>
+                <version>${project.version}</version>
                 <executions>
                     <execution>
                         <id>cdk-generate-sources</id>
@@ -84,12 +86,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <scm>
-        <connection>scm:svn:http://anonsvn.jboss.org/repos/richfaces/sandbox/trunk/ui/colorpicker</connection>
-        <developerConnection>scm:svn:https://svn.jboss.org/repos/richfaces/sandbox/trunk/ui/colorpicker
-        </developerConnection>
-        <url>http://fisheye.jboss.org/browse/richfaces/</url>
-    </scm>
 
 </project>

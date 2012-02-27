@@ -22,16 +22,17 @@
   02110-1301 USA, or see the FSF site: http://www.fsf.org.
   -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>org.richfaces.sandbox.ui.focus</groupId>
         <artifactId>focus-parent</artifactId>
-        <version>4.1.0.Final</version>
-        <relativePath>../parent/pom.xml</relativePath>
+        <version>4.1.0-SNAPSHOT</version>
     </parent>
+
     <artifactId>focus-ui</artifactId>
     <name>Richfaces UI Components: focus ui</name>
 
@@ -39,18 +40,19 @@
         <dependency>
             <groupId>org.richfaces.ui.core</groupId>
             <artifactId>richfaces-ui-core-ui</artifactId>
-            <version>4.1.0.Final</version>
+            <version>${project.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.richfaces.ui</groupId>
             <artifactId>richfaces-components-ui</artifactId>
-            <version>4.1.0.Final</version>
+            <version>${project.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.richfaces.cdk</groupId>
             <artifactId>annotations</artifactId>
+            <version>${project.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -70,7 +72,7 @@
             <plugin>
                 <groupId>org.richfaces.cdk</groupId>
                 <artifactId>maven-cdk-plugin</artifactId>
-                <version>4.1.0.Final</version>
+                <version>${project.version}</version>
                 <executions>
                     <execution>
                         <id>cdk-generate-sources</id>

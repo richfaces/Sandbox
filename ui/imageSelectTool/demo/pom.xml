@@ -8,7 +8,6 @@
         <groupId>org.richfaces.sandbox.ui.imageSelectTool</groupId>
         <artifactId>imageSelectTool-parent</artifactId>
         <version>4.1.0-SNAPSHOT</version>
-        <relativePath>../parent/pom.xml</relativePath>
     </parent>
 
     <artifactId>imageSelectTool-demo</artifactId>
@@ -48,6 +47,7 @@
         <dependency>
             <groupId>org.richfaces.sandbox.ui.imageSelectTool</groupId>
             <artifactId>imageSelectTool-ui</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.sun.faces</groupId>

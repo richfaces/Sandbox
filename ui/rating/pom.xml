@@ -25,43 +25,20 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.richfaces.sandbox.ui.rating</groupId>
-        <artifactId>rating-parent</artifactId>
+        <groupId>org.richfaces</groupId>
+        <artifactId>richfaces-root-parent</artifactId>
         <version>4.1.0-SNAPSHOT</version>
-        <relativePath>parent/pom.xml</relativePath>
     </parent>
 
-    <artifactId>rating-aggregator</artifactId>
+    <groupId>org.richfaces.sandbox.ui.rating</groupId>
+    <artifactId>rating-parent</artifactId>
     <packaging>pom</packaging>
-    <name>Richfaces UI Components: rating Aggregator</name>
+    <name>Richfaces UI Components: rating parent</name>
 
     <modules>
-        <module>bom</module>
-        <module>parent</module>
         <module>ui</module>
         <module>demo</module>
     </modules>
-
-    <profiles>
-        <profile>
-            <id>cli</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.twdata.maven</groupId>
-                        <artifactId>maven-cli-plugin</artifactId>
-                        <version>1.0.6-SNAPSHOT</version>
-                        <configuration>
-                            <userAliases>
-                                <ui>rating-ui clean install</ui>
-                                <demo>rating-demo clean package</demo>
-                            </userAliases>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 
     <distributionManagement>
         <repository>
@@ -75,5 +52,11 @@
             <url>http://artifactory.it-crowd.com.pl/libs-snapshot-local</url>
         </snapshotRepository>
     </distributionManagement>
+
+    <scm>
+        <connection>scm:git:https://blabno@github.com/blabno/sandbox.git</connection>
+        <developerConnection>scm:git:https://blabno@github.com/blabno/sandbox.git</developerConnection>
+        <url>https://github.com/blabno/sandbox</url>
+    </scm>
 
 </project>

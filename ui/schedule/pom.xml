@@ -20,53 +20,44 @@
   02110-1301 USA, or see the FSF site: http://www.fsf.org.
   -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.richfaces.sandbox.ui.schedule</groupId>
-        <artifactId>schedule-parent</artifactId>
-        <version>4.1.1-SNAPSHOT</version>
-        <relativePath>parent/pom.xml</relativePath>
+        <groupId>org.richfaces</groupId>
+        <artifactId>richfaces-root-parent</artifactId>
+        <version>4.1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>schedule-aggregator</artifactId>
+    <groupId>org.richfaces.sandbox.ui.schedule</groupId>
+    <artifactId>schedule-parent</artifactId>
     <packaging>pom</packaging>
-    <name>Richfaces UI Components: schedule Aggregator</name>
+    <name>Richfaces UI Components: schedule parent</name>
 
     <modules>
-        <module>bom</module>
-        <module>parent</module>
         <module>ui</module>
         <module>demo</module>
     </modules>
 
-    <profiles>
-        <profile>
-            <id>cli</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.twdata.maven</groupId>
-                        <artifactId>maven-cli-plugin</artifactId>
-                        <version>1.0.6-SNAPSHOT</version>
-                        <configuration>
-                            <userAliases>
-                                <ui>schedule-ui clean install</ui>
-                                <demo>schedule-demo clean package</demo>
-                            </userAliases>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
+    <distributionManagement>
+        <repository>
+            <id>it-crowd.com.pl</id>
+            <name>IT Crowd company Internal Repository</name>
+            <url>http://artifactory.it-crowd.com.pl/libs-release-local</url>
+        </repository>
+        <snapshotRepository>
+            <id>it-crowd.com.pl</id>
+            <name>IT Crowd company Repository</name>
+            <url>http://artifactory.it-crowd.com.pl/libs-snapshot-local</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <scm>
-        <connection>scm:svn:http://anonsvn.jboss.org/repos/richfaces/sandbox/trunk/ui/schedule</connection>
-        <developerConnection>scm:svn:https://svn.jboss.org/repos/richfaces/sandbox/trunk/ui/schedule</developerConnection>
-        <url>http://fisheye.jboss.org/browse/richfaces/</url>
+        <connection>scm:git:https://blabno@github.com/blabno/sandbox.git</connection>
+        <developerConnection>scm:git:https://blabno@github.com/blabno/sandbox.git</developerConnection>
+        <url>https://github.com/blabno/sandbox</url>
     </scm>
 
 </project>
