@@ -60,7 +60,7 @@
                     </div>
                     <c:if test="#{this:hasFacet(component,'footer')}">
                         <div id="#{clientId}:ft" class="rf-pg-ftr #{component.attributes['footerClass']}">
-                            <div id="#{clientId}:ftc" class="rf-pg-ftr-content">
+                            <div id="#{clientId}:ftc" class="rf-pg-ftr-cnt">
                                 <cdk:call expression="insertFacet(&quot;footer&quot;,facesContext,component)"/>
                             </div>
                         </div>
