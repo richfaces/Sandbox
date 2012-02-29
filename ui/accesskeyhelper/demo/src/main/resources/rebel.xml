@@ -3,13 +3,13 @@
              xsi:schemaLocation="http://www.zeroturnaround.com http://www.zeroturnaround.com/alderaan/rebel-2_0.xsd">
 
     <classpath>
-        <dir name="/home/bernard/projects/richfaces/sandbox/trunk/ui/accesskeyhelper/demo/target/classes"></dir>
-        <dir name="/home/bernard/projects/richfaces/sandbox/trunk/ui/accesskeyhelper/ui/target/classes"></dir>
+        <dir name="/home/bernard/projects/richfaces/my-sandbox/ui/accesskeyhelper/demo/target/classes"></dir>
+        <dir name="/home/bernard/projects/richfaces/my-sandbox/ui/accesskeyhelper/ui/target/classes"></dir>
     </classpath>
 
     <web>
         <link target="/">
-            <dir name="/home/bernard/projects/richfaces/sandbox/trunk/ui/accesskeyhelper/demo/src/main/webapp"></dir>
+            <dir name="/home/bernard/projects/richfaces/my-sandbox/ui/accesskeyhelper/demo/src/main/webapp"></dir>
         </link>
     </web>
 
