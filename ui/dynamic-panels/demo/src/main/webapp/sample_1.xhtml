@@ -51,21 +51,9 @@
         <!--</h:panelGrid>-->
     <!--</h:form>-->
 
-    <!--<h:form>-->
-        <!--<h1>Dynamic tab panel in ajax mode</h1>-->
-        <!--<dynamic-panels:tabPanel switchType="ajax" value="#{dynamicTabPanelBean.ladies}" var="person" rowKeyVar="index">-->
-            <!--<dynamic-panels:tab id="tab#{index}" name="#{person.name}">-->
-                <!--#{person.name}-->
-                <!--<h:inputText value="#{person.birthDate}">-->
-                    <!--<f:convertDateTime pattern="yyyy-mm-dd"/>-->
-                <!--</h:inputText>-->
-            <!--</dynamic-panels:tab>-->
-        <!--</dynamic-panels:tabPanel>-->
-    <!--</h:form>-->
-
     <h:form>
-        <h1>Dynamic tab panel in client mode</h1>
-        <dynamic-panels:tabPanel switchType="client" value="#{dynamicTabPanelBean.ladies}" var="person" rowKeyVar="index">
+        <h1>Dynamic tab panel in ajax mode</h1>
+        <dynamic-panels:tabPanel switchType="ajax" value="#{dynamicTabPanelBean.ladies}" var="person" rowKeyVar="index">
             <dynamic-panels:tab id="tab#{index}" name="#{person.name}">
                 #{person.name}
                 <h:inputText value="#{person.birthDate}">
@@ -73,8 +61,20 @@
                 </h:inputText>
             </dynamic-panels:tab>
         </dynamic-panels:tabPanel>
-        <h:commandButton/>
     </h:form>
+
+    <!--<h:form>-->
+        <!--<h1>Dynamic tab panel in client mode</h1>-->
+        <!--<dynamic-panels:tabPanel switchType="client" value="#{dynamicTabPanelBean.ladies}" var="person" rowKeyVar="index">-->
+            <!--<dynamic-panels:tab id="tab#{index}" name="#{person.name}">-->
+                <!--#{person.name}-->
+                <!--<h:inputText value="#{person.birthDate}">-->
+                    <!--<f:convertDateTime pattern="yyyy-mm-dd"/>-->
+                <!--</h:inputText>-->
+            <!--</dynamic-panels:tab>-->
+        <!--</dynamic-panels:tabPanel>-->
+        <!--<h:commandButton/>-->
+    <!--</h:form>-->
 
     <!--<h:form>-->
         <!--<h1>Static tab panel</h1>-->
