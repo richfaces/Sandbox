@@ -12,7 +12,7 @@
             <cdk:tag>
                 <cdk:tag-name>itemChangeListener</cdk:tag-name>
                 <cdk:tag-type>Facelets</cdk:tag-type>
-                <cdk:handler-class>org.richfaces.view.facelets.html.ItemChangeListenerHandler</cdk:handler-class>
+                <cdk:handler-class>org.richfaces.sandbox.view.facelets.html.ItemChangeListenerHandler</cdk:handler-class>
                 <cdk:generate>false</cdk:generate>
             </cdk:tag>
         </cdk:faces-event>
@@ -24,7 +24,7 @@
             <cdk:tag>
                 <cdk:tag-name>panelToggleListener</cdk:tag-name>
                 <cdk:tag-type>Facelets</cdk:tag-type>
-                <cdk:handler-class>org.richfaces.view.facelets.html.PanelToggleListenerHandler</cdk:handler-class>
+                <cdk:handler-class>org.richfaces.sandbox.view.facelets.html.PanelToggleListenerHandler</cdk:handler-class>
                 <cdk:generate>false</cdk:generate>
             </cdk:tag>
         </cdk:faces-event>
