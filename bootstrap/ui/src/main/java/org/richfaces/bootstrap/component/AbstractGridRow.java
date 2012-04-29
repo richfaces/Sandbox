@@ -22,6 +22,7 @@
 package org.richfaces.bootstrap.component;
 
 import org.richfaces.bootstrap.renderkit.GridRowRendererBase;
+import org.richfaces.cdk.annotations.Attribute;
 import org.richfaces.cdk.annotations.JsfComponent;
 import org.richfaces.cdk.annotations.JsfRenderer;
 import org.richfaces.cdk.annotations.Tag;
@@ -42,5 +43,7 @@ import javax.faces.component.UIPanel;
 abstract public class AbstractGridRow extends UIPanel {
     public static final String COMPONENT_FAMILY = "org.richfaces.bootstrap.GridRow";
     public static final String COMPONENT_TYPE = "org.richfaces.bootstrap.GridRow";
-
+    
+    @Attribute
+    abstract public boolean isFluid();
 }

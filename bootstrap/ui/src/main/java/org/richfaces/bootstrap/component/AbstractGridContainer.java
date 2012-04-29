@@ -23,36 +23,27 @@ package org.richfaces.bootstrap.component;
 
 import javax.faces.component.UIPanel;
 
-import org.richfaces.bootstrap.renderkit.AlertRendererBase;
+import org.richfaces.bootstrap.renderkit.GridContainerRendererBase;
 import org.richfaces.cdk.annotations.Attribute;
 import org.richfaces.cdk.annotations.JsfComponent;
 import org.richfaces.cdk.annotations.JsfRenderer;
 import org.richfaces.cdk.annotations.Tag;
 
 /**
- * Base class for the alert component
- * 
+ * Base class for the gridContainer component
+ *
  * @author <a href="http://www.pauldijou.fr">Paul Dijou</a>
- * 
  */
 @JsfComponent(
-        type = AbstractAlert.COMPONENT_TYPE,
-        family = AbstractAlert.COMPONENT_FAMILY,
-        renderer = @JsfRenderer(type = AlertRendererBase.RENDERER_TYPE),
-        tag = @Tag(name="alert"))
-abstract public class AbstractAlert extends UIPanel {
-    public static final String COMPONENT_FAMILY = "org.richfaces.bootstrap.Alert";
-    public static final String COMPONENT_TYPE = "org.richfaces.bootstrap.Alert";
+        type = AbstractGridContainer.COMPONENT_TYPE,
+        family = AbstractGridContainer.COMPONENT_FAMILY,
+        renderer = @JsfRenderer(type = GridContainerRendererBase.RENDERER_TYPE),
+        tag = @Tag(name="gridContainer"),
+        attributes = "core-props.xml")
+abstract public class AbstractGridContainer extends UIPanel {
+    public static final String COMPONENT_FAMILY = "org.richfaces.bootstrap.GridContainer";
+    public static final String COMPONENT_TYPE = "org.richfaces.bootstrap.GridContainer";
     
     @Attribute
-    abstract public BootstrapSeverity getSeverity();
-    
-    @Attribute
-    abstract public String getLayout();
-    
-    @Attribute
-    abstract public String getHeader();
-    
-    @Attribute
-    abstract public boolean isClosable();
+    abstract public boolean isFluid();
 }

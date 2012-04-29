@@ -19,40 +19,30 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package org.richfaces.bootstrap.component;
+package org.richfaces.bootstrap.renderkit;
 
-import javax.faces.component.UIPanel;
+import javax.faces.application.ResourceDependencies;
+import javax.faces.application.ResourceDependency;
+import javax.faces.component.UIComponent;
 
-import org.richfaces.bootstrap.renderkit.AlertRendererBase;
-import org.richfaces.cdk.annotations.Attribute;
-import org.richfaces.cdk.annotations.JsfComponent;
-import org.richfaces.cdk.annotations.JsfRenderer;
-import org.richfaces.cdk.annotations.Tag;
+import org.richfaces.bootstrap.component.AbstractGridContainer;
+import org.richfaces.renderkit.html.DivPanelRenderer;
 
 /**
- * Base class for the alert component
- * 
+ * Base class for the gridContainer renderer
+ *
  * @author <a href="http://www.pauldijou.fr">Paul Dijou</a>
- * 
  */
-@JsfComponent(
-        type = AbstractAlert.COMPONENT_TYPE,
-        family = AbstractAlert.COMPONENT_FAMILY,
-        renderer = @JsfRenderer(type = AlertRendererBase.RENDERER_TYPE),
-        tag = @Tag(name="alert"))
-abstract public class AbstractAlert extends UIPanel {
-    public static final String COMPONENT_FAMILY = "org.richfaces.bootstrap.Alert";
-    public static final String COMPONENT_TYPE = "org.richfaces.bootstrap.Alert";
+@ResourceDependencies({
+        @ResourceDependency(library = "org.richfaces", name = "ajax.reslib"),
+        @ResourceDependency(library = "org.richfaces", name = "base-component.reslib"),
+        @ResourceDependency(library = "bootstrap/css", name = "bootstrap.css"),
+        @ResourceDependency(library = "bootstrap/css", name = "bootstrap-responsive.css")})
+public abstract class GridContainerRendererBase extends DivPanelRenderer {
+    public static final String RENDERER_TYPE = "org.richfaces.bootstrap.GridContainerRenderer";
     
-    @Attribute
-    abstract public BootstrapSeverity getSeverity();
-    
-    @Attribute
-    abstract public String getLayout();
-    
-    @Attribute
-    abstract public String getHeader();
-    
-    @Attribute
-    abstract public boolean isClosable();
+    // A workaround for RF-11668
+    public AbstractGridContainer castComponent(UIComponent component) {
+        return (AbstractGridContainer) component;
+    }
 }
