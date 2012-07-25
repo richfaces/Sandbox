@@ -22,7 +22,7 @@
 package org.richfaces.bootstrap.component;
 
 import javax.faces.component.UIPanel;
-import org.richfaces.bootstrap.RenderMenuGroupCapable;
+import org.richfaces.bootstrap.RenderMenuFacetCapable;
 import org.richfaces.bootstrap.renderkit.TabbableRendererBase;
 import org.richfaces.cdk.annotations.Attribute;
 import org.richfaces.cdk.annotations.JsfComponent;
@@ -39,10 +39,10 @@ import org.richfaces.cdk.annotations.Tag;
         family = AbstractTabbable.COMPONENT_FAMILY,
         renderer = @JsfRenderer(type = TabbableRendererBase.RENDERER_TYPE),
         tag = @Tag(name="tabbable"))
-public abstract class AbstractTabbable extends UIPanel implements RenderMenuGroupCapable {
+public abstract class AbstractTabbable extends UIPanel implements RenderMenuFacetCapable {
     public static final String COMPONENT_FAMILY = "org.richfaces.bootstrap.Tabs";
     public static final String COMPONENT_TYPE = "org.richfaces.bootstrap.Tabs";
-    public static final String ACTIVE_INDEX_DEFAULT = "1";
+    public static final String ACTIVE_INDEX_DEFAULT = "0";
     public static final String INDEX_SEPARATOR_DEFAULT = ".";
 
     @Attribute
@@ -55,7 +55,7 @@ public abstract class AbstractTabbable extends UIPanel implements RenderMenuGrou
     public abstract String getIndexSeparator();
     
     @Override
-    public String getMenuGroupRendererType() {
-        return "org.richfaces.bootstrap.TabbableMenuGroupRenderer";
+    public String getMenuFacetRendererType() {
+        return "org.richfaces.bootstrap.TabbableMenuFacetRenderer";
     }
 }

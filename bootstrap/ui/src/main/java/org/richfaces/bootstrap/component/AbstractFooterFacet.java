@@ -21,36 +21,33 @@
  */
 package org.richfaces.bootstrap.component;
 
-import javax.faces.component.UIOutput;
-
-import org.richfaces.bootstrap.component.props.TooltipProps;
-import org.richfaces.bootstrap.javascript.BootstrapJSPlugin;
-import org.richfaces.bootstrap.renderkit.PopoverRendererBase;
-import org.richfaces.cdk.annotations.Attribute;
+import org.richfaces.bootstrap.RenderFooterFacetCapable;
 import org.richfaces.cdk.annotations.JsfComponent;
-import org.richfaces.cdk.annotations.JsfRenderer;
 import org.richfaces.cdk.annotations.Tag;
 import org.richfaces.component.attribute.CoreProps;
 
 /**
- * Base class for the popover component
+ * Base class for the footer component
  * 
- * @author Lukas Fryc
+ * @author <a href="http://www.pauldijou.fr">Paul Dijou</a>
+ * 
  */
-@BootstrapJSPlugin(name = "popover")
 @JsfComponent(
-        type = AbstractPopover.COMPONENT_TYPE,
-        family = AbstractPopover.COMPONENT_FAMILY,
-        renderer = @JsfRenderer(type = PopoverRendererBase.RENDERER_TYPE),
-        tag = @Tag(name = "popover"))
-public abstract class AbstractPopover extends UIOutput implements TooltipProps, CoreProps {
-    public static final String COMPONENT_FAMILY = "org.richfaces.bootstrap.Popover";
-    public static final String COMPONENT_TYPE = "org.richfaces.bootstrap.Popover";
-
-    /**
-     * Default content value
-     */
-    @Attribute
-    public abstract String getContent();
-
+        type = AbstractFooterFacet.COMPONENT_TYPE,
+        family = AbstractFooterFacet.COMPONENT_FAMILY,
+        tag = @Tag(name="footerFacet"))
+public abstract class AbstractFooterFacet extends AbstractSemanticComponent<RenderFooterFacetCapable> implements CoreProps {
+    public static final String COMPONENT_FAMILY = "org.richfaces.bootstrap.FooterFacet";
+    public static final String COMPONENT_TYPE = "org.richfaces.bootstrap.FooterFacet";
+    
+    @Override
+    public Class<RenderFooterFacetCapable> getRendererCapability() {
+        return RenderFooterFacetCapable.class;
+    }
+    
+    @Override
+    public String getRendererType(RenderFooterFacetCapable container) {
+        container.setCustomFooterFacet(true);
+        return container.getFooterFacetRendererType();
+    }
 }

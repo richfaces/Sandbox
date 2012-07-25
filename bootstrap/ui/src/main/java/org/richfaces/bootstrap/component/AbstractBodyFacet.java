@@ -21,36 +21,34 @@
  */
 package org.richfaces.bootstrap.component;
 
-import javax.faces.component.UIOutput;
-
-import org.richfaces.bootstrap.component.props.TooltipProps;
-import org.richfaces.bootstrap.javascript.BootstrapJSPlugin;
-import org.richfaces.bootstrap.renderkit.PopoverRendererBase;
-import org.richfaces.cdk.annotations.Attribute;
+import org.richfaces.bootstrap.RenderBodyFacetCapable;
 import org.richfaces.cdk.annotations.JsfComponent;
-import org.richfaces.cdk.annotations.JsfRenderer;
 import org.richfaces.cdk.annotations.Tag;
 import org.richfaces.component.attribute.CoreProps;
 
 /**
- * Base class for the popover component
+ * Base class for the body component
  * 
- * @author Lukas Fryc
+ * @author <a href="http://www.pauldijou.fr">Paul Dijou</a>
+ * 
  */
-@BootstrapJSPlugin(name = "popover")
 @JsfComponent(
-        type = AbstractPopover.COMPONENT_TYPE,
-        family = AbstractPopover.COMPONENT_FAMILY,
-        renderer = @JsfRenderer(type = PopoverRendererBase.RENDERER_TYPE),
-        tag = @Tag(name = "popover"))
-public abstract class AbstractPopover extends UIOutput implements TooltipProps, CoreProps {
-    public static final String COMPONENT_FAMILY = "org.richfaces.bootstrap.Popover";
-    public static final String COMPONENT_TYPE = "org.richfaces.bootstrap.Popover";
-
-    /**
-     * Default content value
-     */
-    @Attribute
-    public abstract String getContent();
-
+        type = AbstractBodyFacet.COMPONENT_TYPE,
+        family = AbstractBodyFacet.COMPONENT_FAMILY,
+        tag = @Tag(name="bodyFacet"))
+public abstract class AbstractBodyFacet extends AbstractSemanticComponent<RenderBodyFacetCapable> implements CoreProps {
+    public static final String COMPONENT_FAMILY = "org.richfaces.bootstrap.BodyFacet";
+    public static final String COMPONENT_TYPE = "org.richfaces.bootstrap.BodyFacet";
+    
+    @Override
+    public Class<RenderBodyFacetCapable> getRendererCapability() {
+        return RenderBodyFacetCapable.class;
+    }
+    
+    @Override
+    public String getRendererType(RenderBodyFacetCapable container) {
+        container.setCustomBodyFacet(true);
+        return container.getBodyFacetRendererType();
+    }
+    
 }

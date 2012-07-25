@@ -21,36 +21,33 @@
  */
 package org.richfaces.bootstrap.component;
 
-import javax.faces.component.UIOutput;
-
-import org.richfaces.bootstrap.component.props.TooltipProps;
-import org.richfaces.bootstrap.javascript.BootstrapJSPlugin;
-import org.richfaces.bootstrap.renderkit.PopoverRendererBase;
-import org.richfaces.cdk.annotations.Attribute;
+import org.richfaces.bootstrap.RenderHeaderFacetCapable;
 import org.richfaces.cdk.annotations.JsfComponent;
-import org.richfaces.cdk.annotations.JsfRenderer;
 import org.richfaces.cdk.annotations.Tag;
 import org.richfaces.component.attribute.CoreProps;
 
 /**
- * Base class for the popover component
+ * Base class for the header component
  * 
- * @author Lukas Fryc
+ * @author <a href="http://www.pauldijou.fr">Paul Dijou</a>
+ * 
  */
-@BootstrapJSPlugin(name = "popover")
 @JsfComponent(
-        type = AbstractPopover.COMPONENT_TYPE,
-        family = AbstractPopover.COMPONENT_FAMILY,
-        renderer = @JsfRenderer(type = PopoverRendererBase.RENDERER_TYPE),
-        tag = @Tag(name = "popover"))
-public abstract class AbstractPopover extends UIOutput implements TooltipProps, CoreProps {
-    public static final String COMPONENT_FAMILY = "org.richfaces.bootstrap.Popover";
-    public static final String COMPONENT_TYPE = "org.richfaces.bootstrap.Popover";
-
-    /**
-     * Default content value
-     */
-    @Attribute
-    public abstract String getContent();
-
+        type = AbstractHeaderFacet.COMPONENT_TYPE,
+        family = AbstractHeaderFacet.COMPONENT_FAMILY,
+        tag = @Tag(name="headerFacet"))
+public abstract class AbstractHeaderFacet extends AbstractSemanticComponent<RenderHeaderFacetCapable> implements CoreProps {
+    public static final String COMPONENT_FAMILY = "org.richfaces.bootstrap.HeaderFacet";
+    public static final String COMPONENT_TYPE = "org.richfaces.bootstrap.HeaderFacet";
+    
+    @Override
+    public Class<RenderHeaderFacetCapable> getRendererCapability() {
+        return RenderHeaderFacetCapable.class;
+    }
+    
+    @Override
+    public String getRendererType(RenderHeaderFacetCapable container) {
+        container.setCustomHeaderFacet(true);
+        return container.getHeaderFacetRendererType();
+    }
 }
