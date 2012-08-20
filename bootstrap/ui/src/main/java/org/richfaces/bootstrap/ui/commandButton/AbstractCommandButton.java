@@ -25,19 +25,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
 
 import org.richfaces.bootstrap.component.props.BootstrapScaleProps;
 import org.richfaces.bootstrap.component.props.BootstrapSeverityProps;
 import org.richfaces.bootstrap.component.props.CardinalPositionProps;
+import org.richfaces.bootstrap.semantic.RenderSeparatorFacetCapable;
 import org.richfaces.cdk.annotations.Attribute;
 import org.richfaces.cdk.annotations.JsfComponent;
 import org.richfaces.cdk.annotations.JsfRenderer;
 import org.richfaces.cdk.annotations.Tag;
 import org.richfaces.component.AbstractActionComponent;
+import org.richfaces.component.AjaxContainer;
+import org.richfaces.component.MetaComponentResolver;
 import org.richfaces.component.Mode;
 import org.richfaces.component.attribute.AjaxProps;
 import org.richfaces.component.attribute.CommandButtonProps;
 import org.richfaces.component.attribute.CoreProps;
+import org.richfaces.renderkit.AjaxConstants;
 
 /**
  * Base class for the commandButton component
@@ -49,7 +54,8 @@ import org.richfaces.component.attribute.CoreProps;
         renderer = @JsfRenderer(type = CommandButtonRendererBase.RENDERER_TYPE),
         tag = @Tag(name="commandButton"))
 public abstract class AbstractCommandButton extends AbstractActionComponent implements AjaxProps, CoreProps,
-    CommandButtonProps, BootstrapSeverityProps, BootstrapScaleProps, CardinalPositionProps {
+    CommandButtonProps, BootstrapSeverityProps, BootstrapScaleProps, CardinalPositionProps,
+    RenderSeparatorFacetCapable, MetaComponentResolver {
     public static final String COMPONENT_FAMILY = "org.richfaces.bootstrap.CommandButton";
     public static final String COMPONENT_TYPE = "org.richfaces.bootstrap.CommandButton";
 
@@ -86,10 +92,25 @@ public abstract class AbstractCommandButton extends AbstractActionComponent impl
     @Attribute
     public abstract String getColor();
     
+    public String resolveClientId(FacesContext facesContext, UIComponent contextComponent, String metaComponentId) {
+        return null;
+    }
+
+    public String substituteUnresolvedClientId(FacesContext facesContext, UIComponent contextComponent, String metaComponentId) {
+        if (AjaxContainer.META_COMPONENT_ID.equals(metaComponentId)) {
+            return AjaxConstants.FORM;
+        }
+        return null;
+    }
+    
+    @Override
+    public String getSeparatorFacetRendererType() {
+        return "org.richfaces.bootstrap.CommandButtonSeparatorFacetRenderer";
+    }
+    
     public boolean hasFacet(String facetName) {
         return getFacet(facetName) != null && getFacet(facetName).isRendered();
     }
-    
 
     public List<UIComponent> getFacetChildren(String facetName) {
         UIComponent facet = getFacet(facetName);
