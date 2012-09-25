@@ -59,7 +59,7 @@ public class ColorPickerRenderer extends InputRendererBase {
 
     static {
         Map<String, Object> defaults = new HashMap<String, Object>();
-        defaults.put("flatmode", false);
+        defaults.put("popup", true);
         defaults.put("okLabel", "OK");
         defaults.put("cancelLabel", "Cancel");
         DEFAULTS = Collections.unmodifiableMap(defaults);
@@ -72,14 +72,14 @@ public class ColorPickerRenderer extends InputRendererBase {
         if (!(component instanceof AbstractColorPicker)) {
             return;
         }
-        boolean flatmode = ((AbstractColorPicker) component).isFlatmode();
+        boolean popup = ((AbstractColorPicker) component).isPopup();
         writer.startElement(HtmlConstants.DIV_ELEM, null);
         String clientId = component.getClientId(context);
         writer.writeAttribute(HtmlConstants.ID_ATTRIBUTE, clientId, HtmlConstants.ID_ATTRIBUTE);
 
         String styleClass = "rf-cpi";
         Object customStyleClass = component.getAttributes().get(HtmlConstants.STYLE_CLASS_ATTR);
-        if(!flatmode) {
+        if(popup) {
             styleClass += " rf-cpi-pop";
         }
         if (customStyleClass != null) {
@@ -90,7 +90,7 @@ public class ColorPickerRenderer extends InputRendererBase {
         getUtils().encodeAttributesFromArray(context, component, HtmlConstants.PASS_THRU_STYLES);
         writer.startElement(HtmlConstants.DIV_ELEM, null);
         writer.writeAttribute(HtmlConstants.CLASS_ATTRIBUTE, "rf-cpi-h", HtmlConstants.STYLE_CLASS_ATTR);
-        if (!flatmode) {
+        if (popup) {
             writer.writeAttribute(HtmlConstants.STYLE_ATTRIBUTE, "display:none", HtmlConstants.STYLE_ATTRIBUTE);
         }
         writer.endElement(HtmlConstants.DIV_ELEM);
@@ -122,7 +122,7 @@ public class ColorPickerRenderer extends InputRendererBase {
          * Include only attributes that are actually set.
          */
         Map<String, Object> options = new HashMap<String, Object>();
-        addOptionIfSetAndNotDefault("flatmode", colorpicker.isFlatmode(), options);
+        addOptionIfSetAndNotDefault("popup", colorpicker.isPopup(), options);
         addOptionIfSetAndNotDefault("okLabel", colorpicker.getOkLabel(), options);
         addOptionIfSetAndNotDefault("cancelLabel", colorpicker.getCancelLabel(), options);
         RenderKitUtils.addToScriptHash(options, "onchange", RenderKitUtils.getAttributeAndBehaviorsValue(context, colorpicker,

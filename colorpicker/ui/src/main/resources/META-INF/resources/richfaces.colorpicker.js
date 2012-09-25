@@ -45,7 +45,7 @@
         init:function (componentId, options) {
             $super.constructor.call(this, componentId);
             this.attachToDom(componentId);
-            options = $.extend({okLabel:"Ok", cancelLabel:"Cancel", flatmode:false, onchange:null, onshow:null, onhide:null}, options);
+            options = $.extend({okLabel:"Ok", cancelLabel:"Cancel", popup:true, onchange:null, onshow:null, onhide:null}, options);
             this.options = options;
             /**
              * Small square that is used to show or hide picker.
@@ -135,7 +135,7 @@
             var initialTogglerCoords = {outerHeight:toggler.outerHeight()};
 
             this.show = function () {
-                if (options.flatmode) {
+                if (!options.popup) {
                     return;
                 }
                 if (options.onshow != null) {
@@ -146,7 +146,7 @@
 
             };
             this.hide = function () {
-                if (options.flatmode) {
+                if (!options.popup) {
                     return;
                 }
                 if (options.onhide != null) {
