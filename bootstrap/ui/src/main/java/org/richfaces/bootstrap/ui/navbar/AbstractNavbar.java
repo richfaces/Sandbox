@@ -55,6 +55,15 @@ public abstract class AbstractNavbar extends UIPanel implements RenderMenuFacetC
     @Attribute(defaultValue = "true")
     public abstract boolean isCollapsible();
     
+    /**
+     * Color inversion attribute for the navbar component.
+     * If true, add "navbar-inverse" class to the current navbar component.
+     * 
+     * @author <a href="http://community.jboss.org/people/electrobolt">Adrian Chia</a>
+     * */
+    @Attribute(defaultValue = "false")
+    public abstract boolean isInverse();
+    
     @Override
     public String getMenuFacetRendererType() {
         return "org.richfaces.bootstrap.NavbarMenuFacetRenderer";
