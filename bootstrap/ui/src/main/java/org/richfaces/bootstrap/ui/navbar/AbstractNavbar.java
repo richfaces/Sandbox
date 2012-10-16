@@ -48,7 +48,7 @@ public abstract class AbstractNavbar extends UIPanel implements RenderMenuFacetC
     public static final String COMPONENT_TYPE = "org.richfaces.bootstrap.Navbar";
 
     /**
-     * A simple text / link that display your project or brand Name.
+     * A simple text / link that display your project or brand name.
      * */
     @Attribute
     public abstract String getBrand();
