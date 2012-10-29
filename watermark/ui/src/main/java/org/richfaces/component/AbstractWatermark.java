@@ -30,6 +30,7 @@ import org.richfaces.renderkit.WatermarkRendererBase;
 
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
+import javax.faces.component.UIOutput;
 import javax.faces.context.FacesContext;
 
 /**
@@ -42,7 +43,7 @@ import javax.faces.context.FacesContext;
     renderer = @JsfRenderer(family = AbstractWatermark.COMPONENT_FAMILY, type = WatermarkRendererBase.RENDERER_TYPE),
     attributes = {"core-props.xml", "javax.faces.component.ValueHolder.xml"}
 )
-public abstract class AbstractWatermark extends UIInput {
+public abstract class AbstractWatermark extends UIOutput {
 // ------------------------------ FIELDS ------------------------------
 
     public static final String COMPONENT_FAMILY = "org.richfaces.Watermark";
