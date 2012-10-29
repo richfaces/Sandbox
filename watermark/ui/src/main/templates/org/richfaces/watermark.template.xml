@@ -16,7 +16,7 @@
             <script id="#{clientId}Script" type="text/javascript">
                 <cdk:scriptObject name="options">
                     <cdk:scriptOption attributes="styleClass" />
-                    <cdk:scriptOption name="targetId" value="#{component.getTargetClientId(facesContext)}" />
+                    <cdk:scriptOption name="targetId" value="#{getTargetId(facesContext, component)}" />
                     <cdk:scriptOption name="text" value="#{getConvertedValue(facesContext, component)}" />
                 </cdk:scriptObject>
                 new RichFaces.ui.Watermark("#{clientId}", #{toScriptArgs(options)});

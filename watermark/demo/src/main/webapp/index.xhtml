@@ -30,15 +30,14 @@
             <watermark:watermark value="#{watermarkBean.text}"/>
         </h:inputText>
 
-        <rich:calendar id="calendar" value="#{watermarkBean.date}" enableManualInput="true" ajaxSingle="true"/>
-        <watermark:watermark value="#{watermarkBean.text}" for="calendar" />
+        <rich:calendar id="calendar" value="#{watermarkBean.date}" enableManualInput="true" ajaxSingle="true">
+            <watermark:watermark value="#{watermarkBean.text}" />
+        </rich:calendar>
+        
 
         <!--<rich:comboBox>-->
         <!--<watermark:watermark value="#{watermarkBean.text}"/>-->
         <!--</rich:comboBox>-->
-
-        <input id="htmlInput" type="text"/>
-        <watermark:watermark value="#{watermarkBean.textObject}" for="htmlInput" converter="#{watermarkBean.converter}"/>
 
         <h:inputTextarea id="textarea" value="#{watermarkBean.watermarkedInput}" rows="10" cols="40">
             <watermark:watermark value="#{watermarkBean.text}"/>

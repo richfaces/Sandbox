@@ -21,9 +21,7 @@
  */
 package org.richfaces.component;
 
-import javax.faces.component.UIComponent;
 import javax.faces.component.UIOutput;
-import javax.faces.context.FacesContext;
 
 import org.richfaces.cdk.annotations.Attribute;
 import org.richfaces.cdk.annotations.JsfComponent;
@@ -44,15 +42,8 @@ public abstract class AbstractWatermark extends UIOutput {
     public static final String COMPONENT_FAMILY = "org.richfaces.Watermark";
 
     public static final String COMPONENT_TYPE = "org.richfaces.Watermark";
-
-    // ------------------------ INTERFACE METHODS ------------------------
-
-    // --------------------- Interface ValueHolder ---------------------
-
     @Attribute(required = true)
     public abstract Object getValue();
-
-    // -------------------------- OTHER METHODS --------------------------
 
     /**
      * Use this if watermark cannot be nested within come components i.e. in calendar.
@@ -61,26 +52,6 @@ public abstract class AbstractWatermark extends UIOutput {
      */
     @Attribute
     public abstract String getFor();
-
-    public String getTargetClientId(FacesContext context) {
-        String sid = getFor();
-        String target;
-        if (sid != null && !"".equals(sid)) {
-            try {
-                UIComponent forcomp = findComponent(sid);
-                if (forcomp != null) {
-                    target = forcomp.getClientId(context);
-                } else {
-                    target = sid;
-                }
-            } catch (IllegalArgumentException e) {
-                target = sid;
-            }
-        } else {
-            target = getParent().getClientId(context);
-        }
-        return target;
-    }
 
     /**
      * Space-separated list of CSS style class(es) which will be applied to the target input component when watermark is
