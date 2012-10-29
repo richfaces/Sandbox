@@ -21,6 +21,10 @@
  */
 package org.richfaces.component;
 
+import javax.faces.component.UIComponent;
+import javax.faces.component.UIOutput;
+import javax.faces.context.FacesContext;
+
 import org.richfaces.cdk.annotations.Attribute;
 import org.richfaces.cdk.annotations.JsfComponent;
 import org.richfaces.cdk.annotations.JsfRenderer;
@@ -28,37 +32,27 @@ import org.richfaces.cdk.annotations.Tag;
 import org.richfaces.cdk.annotations.TagType;
 import org.richfaces.renderkit.WatermarkRendererBase;
 
-import javax.faces.component.UIComponent;
-import javax.faces.component.UIInput;
-import javax.faces.component.UIOutput;
-import javax.faces.context.FacesContext;
-
 /**
- * Adds watermark capability to HTML input and textarea elements.
- * A watermark typically appears as light gray text within an input or textarea element whenever
- * the element is empty and does not have focus. This provides a hint to the user as to what
+ * Adds watermark capability to HTML input and textarea elements. A watermark typically appears as light gray text within an
+ * input or textarea element whenever the element is empty and does not have focus. This provides a hint to the user as to what
  * the input or textarea element is used for, or the type of input that is required.
  */
-@JsfComponent(tag = @Tag(name = "watermark", type = TagType.Facelets),
-    renderer = @JsfRenderer(family = AbstractWatermark.COMPONENT_FAMILY, type = WatermarkRendererBase.RENDERER_TYPE),
-    attributes = {"core-props.xml", "javax.faces.component.ValueHolder.xml"}
-)
+@JsfComponent(tag = @Tag(name = "watermark", type = TagType.Facelets), renderer = @JsfRenderer(family = AbstractWatermark.COMPONENT_FAMILY, type = WatermarkRendererBase.RENDERER_TYPE), attributes = { "javax.faces.component.ValueHolder.xml" })
 public abstract class AbstractWatermark extends UIOutput {
-// ------------------------------ FIELDS ------------------------------
+    // ------------------------------ FIELDS ------------------------------
 
     public static final String COMPONENT_FAMILY = "org.richfaces.Watermark";
 
     public static final String COMPONENT_TYPE = "org.richfaces.Watermark";
 
-// ------------------------ INTERFACE METHODS ------------------------
+    // ------------------------ INTERFACE METHODS ------------------------
 
-
-// --------------------- Interface ValueHolder ---------------------
+    // --------------------- Interface ValueHolder ---------------------
 
     @Attribute(required = true)
     public abstract Object getValue();
 
-// -------------------------- OTHER METHODS --------------------------
+    // -------------------------- OTHER METHODS --------------------------
 
     /**
      * Use this if watermark cannot be nested within come components i.e. in calendar.
@@ -89,10 +83,9 @@ public abstract class AbstractWatermark extends UIOutput {
     }
 
     /**
-     * This attribute is not used.
-     *
-     * @return irrelevant
+     * Space-separated list of CSS style class(es) which will be applied to the target input component when watermark is
+     * active.
      */
-    @Attribute(hidden = true)
-    public abstract String getTitle();
+    @Attribute
+    public abstract String getStyleClass();
 }

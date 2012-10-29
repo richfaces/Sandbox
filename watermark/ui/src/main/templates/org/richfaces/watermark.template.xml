@@ -8,12 +8,20 @@
         <cdk:superclass>org.richfaces.renderkit.WatermarkRendererBase</cdk:superclass>
         <cdk:component-family>org.richfaces.Watermark</cdk:component-family>
         <cdk:renderer-type>org.richfaces.WatermarkRenderer</cdk:renderer-type>
+        <cdk:component-base-class>org.richfaces.component.AbstractWatermark</cdk:component-base-class>
     </cc:interface>
 
     <cc:implementation>
-        <script id="#{clientId}" type="text/javascript">
-            <cdk:call expression="writeInitFunction(facesContext,component)"/>
-        </script>
+        <span id="#{clientId}">
+            <script id="#{clientId}Script" type="text/javascript">
+                <cdk:scriptObject name="options">
+                    <cdk:scriptOption attributes="styleClass" />
+                    <cdk:scriptOption name="targetId" value="#{component.getTargetClientId(facesContext)}" />
+                    <cdk:scriptOption name="text" value="#{getConvertedValue(facesContext, component)}" />
+                </cdk:scriptObject>
+                new RichFaces.ui.Watermark("#{clientId}", #{toScriptArgs(options)});
+            </script>
+        </span>
     </cc:implementation>
 
 </cdk:root>
