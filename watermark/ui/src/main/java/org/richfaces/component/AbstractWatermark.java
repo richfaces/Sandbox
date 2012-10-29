@@ -61,30 +61,11 @@ public abstract class AbstractWatermark extends UIInput {
 
     /**
      * Use this if watermark cannot be nested within come components i.e. in calendar.
-     * <p/>
-     * Example 1: rich:calendar with id="c" nested in form with id="f" renders input with
-     * clientId="f:cInputDate".
-     * rich:calendar also gets messed up if watermark is nested within, so place it outside of calendar.
-     * So in order to attach watermark to that element provide for="c" suffix="InputDate".
-     * <p/>
-     * Example 2: watermark should be attached to pure html input (not jsf component) with id="htmlInput".
-     * To achieve this provide for="htmlInput".
      *
      * @return id of component for which watermark should be applied
      */
     @Attribute
     public abstract String getFor();
-
-    /**
-     * Use this if watermark should be attached to element with id different then component id.
-     * i.e.: rich:comboBox with id="combo" nested in form with id="f" renders input with
-     * clientId="f:combocomboboxField"
-     * So in order to attach watermark to that element provide suffix="comboboxField".
-     *
-     * @return the suffix
-     */
-    @Attribute
-    public abstract String getSuffix();
 
     public String getTargetClientId(FacesContext context) {
         String sid = getFor();
@@ -102,10 +83,6 @@ public abstract class AbstractWatermark extends UIInput {
             }
         } else {
             target = getParent().getClientId(context);
-        }
-        String suffix = getSuffix();
-        if (suffix != null && !"".equals(suffix)) {
-            target += suffix;
         }
         return target;
     }
