@@ -27,8 +27,4 @@ public abstract class WatermarkRendererBase extends InputRendererBase {
             return value != null ? value.toString() : "";
         }
     }
-
-    protected String getTargetId(FacesContext facesContext, AbstractWatermark watermark) {
-        return watermark.getParent().getClientId();
-    }
 }

@@ -15,10 +15,6 @@
     <rich:messages ajaxRendered="true"/>
 
     <h:form>
-        <!-- 
-        <a4j:poll ajaxSingle="true" interval="5000"/>
-        <a4j:queue requestDelay="400" ignoreDupResponses="true"/>
-         -->
 
         <h:outputLabel value="Watermark text" for="text"/>
         <h:inputTextarea id="text" value="#{watermarkBean.text}" required="true">
@@ -34,10 +30,8 @@
             <watermark:watermark value="#{watermarkBean.text}" />
         </rich:calendar>
         
-
-        <!--<rich:comboBox>-->
-        <!--<watermark:watermark value="#{watermarkBean.text}"/>-->
-        <!--</rich:comboBox>-->
+        <input id="htmlInput" type="text"/>
+        <watermark:watermark value="#{watermarkBean.textObject}" selector="#htmlInput" converter="#{watermarkBean.converter}" />
 
         <h:inputTextarea id="textarea" value="#{watermarkBean.watermarkedInput}" rows="10" cols="40">
             <watermark:watermark value="#{watermarkBean.text}"/>

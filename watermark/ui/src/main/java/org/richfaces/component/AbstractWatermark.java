@@ -46,12 +46,11 @@ public abstract class AbstractWatermark extends UIOutput {
     public abstract Object getValue();
 
     /**
-     * Use this if watermark cannot be nested within come components i.e. in calendar.
-     *
-     * @return id of component for which watermark should be applied
+     * The jQuery selector used to filter which child DOM elements of the target/parent to which the watermark will
+     * be attached.
      */
     @Attribute
-    public abstract String getFor();
+    public abstract String getSelector();
 
     /**
      * Space-separated list of CSS style class(es) which will be applied to the target input component when watermark is
