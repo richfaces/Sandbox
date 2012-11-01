@@ -11,7 +11,8 @@ import org.richfaces.component.util.InputUtils;
 @ResourceDependencies({ @ResourceDependency(name = "jquery.js", target = "head"),
         @ResourceDependency(name = "jquery.watermark.js", target = "head"),
         @ResourceDependency(name = "base-component.reslib", library = "org.richfaces", target = "head"),
-        @ResourceDependency(name = "richfaces.watermark.js", target = "head") })
+        @ResourceDependency(name = "richfaces.watermark.js", target = "head"),
+        @ResourceDependency(name = "watermark.css", target = "head")})
 public abstract class WatermarkRendererBase extends InputRendererBase {
 
     public static final String RENDERER_TYPE = "org.richfaces.WatermarkRenderer";

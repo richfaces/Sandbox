@@ -2,7 +2,9 @@
 
     rf.ui = rf.ui || {};
 
-    var defaultOptions = {};
+    var defaultOptions = {
+        useNative: false
+    };
 
     var inputLocator = "input[type=text], input[type=password], textarea";
 
@@ -12,9 +14,10 @@
 
         init: function (componentId, options) {
             $super.constructor.call(this, componentId);
+            options = $.extend({}, defaultOptions, options);
             this.attachToDom(this.id);
             $(function() {
-                options.className = options['styleClass'];
+                options.className = 'rf-plhdr ' + ((options.styleClass) ? options.styleClass : '');
                 var elements = (options.selector) ? $(options.selector) : $(document.getElementById(options.targetId));
                 // finds all inputs within the subtree of target elements
                 var inputs = elements

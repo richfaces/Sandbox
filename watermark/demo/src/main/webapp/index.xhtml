@@ -4,18 +4,17 @@
       xmlns:rich="http://richfaces.org/rich" xmlns:watermark="http://richfaces.org/sandbox/watermark">
 <h:head>
     <title>Watermark sample</title>
+    
     <style type="text/css">
-        .rich-container input.watermark {
-            color: #777;
+        input.customWatermarkClass {
+            color: blue !important
         }
     </style>
 </h:head>
 
-<h:body class="rich-container">
-    <rich:messages ajaxRendered="true"/>
+<h:body>
 
     <h:form>
-
         <h:outputLabel value="Watermark text" for="text"/>
         <h:inputTextarea id="text" value="#{watermarkBean.text}" required="true">
             <f:ajax event="valueChange" render="@form"/>
@@ -23,7 +22,7 @@
         <h:commandButton value="Submit" action="#{watermarkBean.submit}"/>
         <br/><br/>
         <h:inputText id="watermarked" value="#{watermarkBean.watermarkedInput}">
-            <watermark:watermark value="#{watermarkBean.text}"/>
+            <watermark:watermark value="#{watermarkBean.text}" styleClass="customWatermarkClass" />
         </h:inputText>
 
         <rich:calendar id="calendar" value="#{watermarkBean.date}" enableManualInput="true" ajaxSingle="true">
@@ -37,9 +36,6 @@
             <watermark:watermark value="#{watermarkBean.text}"/>
         </h:inputTextarea>
     </h:form>
-
-    <div id="status"></div>
-    <!--<rich:insert src="/index.xhtml" highlight="xhtml" rendered="#{showSource!=false}"/>-->
 
 </h:body>
 </html>
