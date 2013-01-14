@@ -50,5 +50,10 @@ public abstract class AbstractHeroUnit extends UIComponentBase {
 
     @Attribute
     public abstract String getStyleClass();
-
+    
+    @Attribute
+    public abstract String getHeadingClass();
+    
+    @Attribute
+    public abstract String getTaglineClass();
 }
