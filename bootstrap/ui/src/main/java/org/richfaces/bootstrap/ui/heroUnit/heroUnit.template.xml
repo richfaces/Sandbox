@@ -13,7 +13,7 @@
     </cc:interface>
 
     <cc:implementation>
-        <div id="#{clientId}" class="hero-unit #{component.styleClass}" cdk:passThrough="style title on*">
+        <div id="#{clientId}" class="hero-unit #{empty(component.severity) ? '' : 'hero-unit-'.concat(component.severity)} #{component.styleClass}" cdk:passThrough="style title on*">
             <h1 class="#{component.headingClass}">#{component.heading}</h1>
             <c:choose>
                 <c:when test="#{component.getFacet('tagline') != null and component.getFacet('tagline').rendered}">
