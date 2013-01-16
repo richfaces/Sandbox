@@ -60,4 +60,7 @@ public abstract class AbstractAlert extends UIPanel {
     
     @Attribute
     public abstract boolean isClosable();
+    
+    @Attribute(defaultValue = "none")
+    public abstract String getIcon();
 }
