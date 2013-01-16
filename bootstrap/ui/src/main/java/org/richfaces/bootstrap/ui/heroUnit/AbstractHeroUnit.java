@@ -23,6 +23,7 @@ package org.richfaces.bootstrap.ui.heroUnit;
 
 import javax.faces.component.UIComponentBase;
 
+import org.richfaces.bootstrap.component.BootstrapSeverity;
 import org.richfaces.cdk.annotations.Attribute;
 import org.richfaces.cdk.annotations.JsfComponent;
 import org.richfaces.cdk.annotations.JsfRenderer;
@@ -50,5 +51,17 @@ public abstract class AbstractHeroUnit extends UIComponentBase {
 
     @Attribute
     public abstract String getStyleClass();
-
+    
+    @Attribute
+    public abstract String getHeadingClass();
+    
+    @Attribute
+    public abstract String getTaglineClass();
+    
+    @Attribute(suggestedValue = BootstrapSeverity.SUCCESS + ","
+        + BootstrapSeverity.INFO + ","
+        + BootstrapSeverity.ERROR + ","
+        + BootstrapSeverity.DANGER + ","
+        + BootstrapSeverity.WARNING)
+    public abstract String getSeverity();
 }
