@@ -21,6 +21,8 @@
  */
 package org.richfaces.component;
 
+import javax.faces.component.UIOutput;
+
 import org.richfaces.cdk.annotations.Attribute;
 import org.richfaces.cdk.annotations.JsfComponent;
 import org.richfaces.cdk.annotations.JsfRenderer;
@@ -28,93 +30,32 @@ import org.richfaces.cdk.annotations.Tag;
 import org.richfaces.cdk.annotations.TagType;
 import org.richfaces.renderkit.WatermarkRendererBase;
 
-import javax.faces.component.UIComponent;
-import javax.faces.component.UIInput;
-import javax.faces.context.FacesContext;
-
 /**
- * Adds watermark capability to HTML input and textarea elements.
- * A watermark typically appears as light gray text within an input or textarea element whenever
- * the element is empty and does not have focus. This provides a hint to the user as to what
+ * Adds watermark capability to HTML input and textarea elements. A watermark typically appears as light gray text within an
+ * input or textarea element whenever the element is empty and does not have focus. This provides a hint to the user as to what
  * the input or textarea element is used for, or the type of input that is required.
  */
-@JsfComponent(tag = @Tag(name = "watermark", type = TagType.Facelets),
-    renderer = @JsfRenderer(family = AbstractWatermark.COMPONENT_FAMILY, type = WatermarkRendererBase.RENDERER_TYPE),
-    attributes = {"core-props.xml", "javax.faces.component.ValueHolder.xml"}
-)
-public abstract class AbstractWatermark extends UIInput {
-// ------------------------------ FIELDS ------------------------------
+@JsfComponent(tag = @Tag(name = "watermark", type = TagType.Facelets), renderer = @JsfRenderer(family = AbstractWatermark.COMPONENT_FAMILY, type = WatermarkRendererBase.RENDERER_TYPE), attributes = { "javax.faces.component.ValueHolder.xml" })
+public abstract class AbstractWatermark extends UIOutput {
+    // ------------------------------ FIELDS ------------------------------
 
     public static final String COMPONENT_FAMILY = "org.richfaces.Watermark";
 
     public static final String COMPONENT_TYPE = "org.richfaces.Watermark";
-
-// ------------------------ INTERFACE METHODS ------------------------
-
-
-// --------------------- Interface ValueHolder ---------------------
-
     @Attribute(required = true)
     public abstract Object getValue();
 
-// -------------------------- OTHER METHODS --------------------------
-
     /**
-     * Use this if watermark cannot be nested within come components i.e. in calendar.
-     * <p/>
-     * Example 1: rich:calendar with id="c" nested in form with id="f" renders input with
-     * clientId="f:cInputDate".
-     * rich:calendar also gets messed up if watermark is nested within, so place it outside of calendar.
-     * So in order to attach watermark to that element provide for="c" suffix="InputDate".
-     * <p/>
-     * Example 2: watermark should be attached to pure html input (not jsf component) with id="htmlInput".
-     * To achieve this provide for="htmlInput".
-     *
-     * @return id of component for which watermark should be applied
+     * The jQuery selector used to filter which child DOM elements of the target/parent to which the watermark will
+     * be attached.
      */
     @Attribute
-    public abstract String getFor();
+    public abstract String getSelector();
 
     /**
-     * Use this if watermark should be attached to element with id different then component id.
-     * i.e.: rich:comboBox with id="combo" nested in form with id="f" renders input with
-     * clientId="f:combocomboboxField"
-     * So in order to attach watermark to that element provide suffix="comboboxField".
-     *
-     * @return the suffix
+     * Space-separated list of CSS style class(es) which will be applied to the target input component when watermark is
+     * active.
      */
     @Attribute
-    public abstract String getSuffix();
-
-    public String getTargetClientId(FacesContext context) {
-        String sid = getFor();
-        String target;
-        if (sid != null && !"".equals(sid)) {
-            try {
-                UIComponent forcomp = findComponent(sid);
-                if (forcomp != null) {
-                    target = forcomp.getClientId(context);
-                } else {
-                    target = sid;
-                }
-            } catch (IllegalArgumentException e) {
-                target = sid;
-            }
-        } else {
-            target = getParent().getClientId(context);
-        }
-        String suffix = getSuffix();
-        if (suffix != null && !"".equals(suffix)) {
-            target += suffix;
-        }
-        return target;
-    }
-
-    /**
-     * This attribute is not used.
-     *
-     * @return irrelevant
-     */
-    @Attribute(hidden = true)
-    public abstract String getTitle();
+    public abstract String getStyleClass();
 }

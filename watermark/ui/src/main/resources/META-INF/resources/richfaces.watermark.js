@@ -1,22 +1,30 @@
 (function ($, rf) {
-    // Create (for example) ui container for our component class
+
     rf.ui = rf.ui || {};
-    // Default options definition if needed for the component
-    var defaultOptions = {};
-    // Extending component class with new properties and methods using extendClass
-    // $super - reference to the parent prototype, will be available inside those methods
+
+    var defaultOptions = {
+        useNative: false
+    };
+
+    var inputLocator = "input[type=text], input[type=password], textarea";
+
     rf.ui.Watermark = rf.BaseComponent.extendClass({
-        // class name
+
         name:"Watermark",
+
         init: function (componentId, options) {
-            // call constructor of parent class if needed
             $super.constructor.call(this, componentId);
-            // attach component object to DOM element for
-            // future cleaning and for client side API calls
+            options = $.extend({}, defaultOptions, options);
             this.attachToDom(this.id);
-            jQuery(function() {
-                options.className = options['styleClass'];
-                jQuery(document.getElementById(options.targetId)).watermark(options.text, options);
+            $(function() {
+                options.className = 'rf-plhdr ' + ((options.styleClass) ? options.styleClass : '');
+                var elements = (options.selector) ? $(options.selector) : $(document.getElementById(options.targetId));
+                // finds all inputs within the subtree of target elements
+                var inputs = elements
+                    .find(inputLocator)
+                    .andSelf()
+                    .filter(inputLocator);
+                inputs.watermark(options.text, options);
             });
         },
         // destructor definition
