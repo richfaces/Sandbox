@@ -48,6 +48,7 @@
             <modules>
                 <module>accesskeyhelper</module>
                 <module>bootstrap</module>
+                <module>captcha</module>
                 <module>carousel</module>
                 <module>colorpicker</module>
                 <module>component-template</module>

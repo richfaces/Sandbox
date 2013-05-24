@@ -1,0 +1,50 @@
+<!--
+  JBoss, Home of Professional Open Source
+  Copyright , Red Hat, Inc. and individual contributors
+  by the @authors tag. See the copyright.txt in the distribution for a
+  full listing of individual contributors.
+
+  This is free software; you can redistribute it and/or modify it
+  under the terms of the GNU Lesser General Public License as
+  published by the Free Software Foundation; either version 2.1 of
+  the License, or (at your option) any later version.
+
+  This software is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+  Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public
+  License along with this software; if not, write to the Free
+  Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+  02110-1301 USA, or see the FSF site: http://www.fsf.org.
+  -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:captcha="http://richfaces.org/sandbox/captcha" xmlns:rich="http://richfaces.org/rich">
+<h:head>
+    <title>captcha sample</title>
+
+</h:head>
+<h:body class="rich-container">
+
+    <rich:notifyMessages/>
+
+    <ui:include src="menu.xhtml"/>
+
+    <h:form>
+
+        <h:inputText value="#{formBean.name}" required="true"/>
+
+        <captcha:captcha theme="white" lang="de" publicKey="6LdwOtASAAAAAP2rhPiGA7qK89mwZF9DjtDtcFTB" privateKey="6LdwOtASAAAAAMaDHYuxnNc5mzS902HyFjQj_f0l"/>
+
+        <h:commandButton action="#{formBean.submit}" value="Submit"/>
+    </h:form>
+
+    <h:outputText value="#{formBean.submitedValue}"/>
+
+
+</h:body>
+</html>
