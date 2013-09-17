@@ -38,31 +38,28 @@
 
     <cc:implementation>
         <cdk:scriptObject name="events">
-           <cdk:scriptOption attributes="onplotclick onmouseover onmouseout" wrapper="eventHandler"/>
+           <cdk:scriptOption attributes="onplotclick onplothover onmouseout" wrapper="eventHandler"/>
            <cdk:scriptOption name="eventFunction" value="#{createEventFunction(facesContext,component)}"/> 
         </cdk:scriptObject>
           
-        
-        #{component.title}
-        <div id="#{clientId}" class="#{component.styleClass} richfaces-chart">
-        
+        <div id="#{clientId}" class="#{component.styleClass} richfaces-chart-container">
+        	<div class="richfaces-chart-title">#{component.title}</div>
+        	<div id="#{clientId}Chart" class="richfaces-chart"></div>
+	        <script type="text/javascript">
+	            //<![CDATA[  
+	                    $(document.getElementById("#{clientId}Chart")).chart(
+	                                   $.extend({
+	                                    handlers: #{toScriptArgs(events)},
+	                                    particularSeriesHandlers: #{getParticularSeriesHandler(facesContext,component)},
+	                                    data: #{getData(facesContext,component)},
+	                                    },
+	                                    #{getOpts(facesContext,component)}
+	                                   )
+	                      ); 
+	            //]]>
+	        </script>
         </div>
-        <script type="text/javascript">
-            //<![CDATA[  
-             
-             
-                    $(document.getElementById("#{clientId}")).chart(
-                                   $.extend({
-                                    handlers: #{toScriptArgs(events)},
-                                    particularSeriesHandlers: #{getParticularSeriesHandler(facesContext,component)},
-                                    data: #{getData(facesContext,component)},
-                                    },
-                                    #{getOpts(facesContext,component)}
-                                   )
-                      ); 
-             
-            //]]>
-        </script>
+        
             
     </cc:implementation>
     
