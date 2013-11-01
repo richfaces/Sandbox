@@ -1,46 +1,38 @@
 package org.richfaces.sandbox.chart;
 
+import static java.util.Arrays.asList;
+import static org.richfaces.renderkit.RenderKitUtils.addToScriptHash;
+import static org.richfaces.renderkit.RenderKitUtils.attributes;
+
 import java.io.IOException;
+import java.sql.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
+import javax.faces.FacesException;
 import javax.faces.component.UIComponent;
 import javax.faces.component.visit.VisitCallback;
 import javax.faces.component.visit.VisitContext;
 import javax.faces.component.visit.VisitResult;
 import javax.faces.context.FacesContext;
 
+import org.richfaces.json.JSONArray;
 import org.richfaces.json.JSONException;
 import org.richfaces.json.JSONObject;
+import org.richfaces.renderkit.RenderKitUtils;
 import org.richfaces.renderkit.RendererBase;
 import org.richfaces.sandbox.chart.component.AbstractChart;
 import org.richfaces.sandbox.chart.component.AbstractLegend;
+import org.richfaces.sandbox.chart.component.AbstractPoint;
 import org.richfaces.sandbox.chart.component.AbstractSeries;
 import org.richfaces.sandbox.chart.component.AbstractXaxis;
 import org.richfaces.sandbox.chart.component.AbstractYaxis;
-
-import static java.util.Arrays.asList;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.faces.FacesException;
-
-import org.richfaces.javascript.JSFunctionDefinition;
-import org.richfaces.javascript.JSReference;
-import org.richfaces.json.JSONArray;
-import org.richfaces.renderkit.RenderKitUtils;
-
-import static org.richfaces.renderkit.RenderKitUtils.addToScriptHash;
-import static org.richfaces.renderkit.RenderKitUtils.attributes;
-
-import org.richfaces.sandbox.chart.component.AbstractPoint;
 import org.richfaces.sandbox.chart.model.ChartDataModel;
+import org.richfaces.sandbox.chart.model.ChartDataModel.ChartType;
 import org.richfaces.sandbox.chart.model.NumberChartDataModel;
 import org.richfaces.sandbox.chart.model.StringChartDataModel;
-import org.richfaces.sandbox.chart.model.ChartDataModel.ChartType;
-import org.richfaces.ui.common.AjaxFunction;
-import org.richfaces.util.AjaxRendererUtils;
 
 /**
  *
@@ -53,9 +45,9 @@ public abstract class ChartRendererBase extends RendererBase {
     
     private static final String X_VALUE = "x";
     private static final String Y_VALUE = "y";
-    private static final String POINT_INDEX = "pointIndex";
+    private static final String POINT_INDEX = "dataIndex";
     private static final String SERIES_INDEX = "seriesIndex";
-    private static final String EVENT_TYPE = "eventType";
+    private static final String EVENT_TYPE = "name";
     private static final String PLOT_CLICK_TYPE = "plotclick";
 
     /**
@@ -124,6 +116,7 @@ public abstract class ChartRendererBase extends RendererBase {
             return;
         }
         Map<String, String> requestParameterMap = context.getExternalContext().getRequestParameterMap();
+        
         if (requestParameterMap.get(component.getClientId(context)) != null) {
             String xParam = requestParameterMap.get(getFieldId(component, X_VALUE));
             String yParam = requestParameterMap.get(getFieldId(component, Y_VALUE));
@@ -142,6 +135,7 @@ public abstract class ChartRendererBase extends RendererBase {
             } catch (NumberFormatException ex) {
                 throw new FacesException("Cannot convert request parmeters", ex);
             }
+        
         }
     }
 
@@ -175,8 +169,8 @@ public abstract class ChartRendererBase extends RendererBase {
         
         if(!visitCallback.isDataEmpty()){
 	        component.getAttributes().put("charttype", visitCallback.getChartType());
-	        component.getAttributes().put("xtype", visitCallback.getKeyType());
-	        component.getAttributes().put("ytype", visitCallback.getValType());
+	        component.getAttributes().put("xtype", axisDataTypeToString(visitCallback.getKeyType()));
+	        component.getAttributes().put("ytype", axisDataTypeToString(visitCallback.getValType()));
         }
         
         component.getAttributes().put("handlers", visitCallback.getSeriesSpecificHandlers());
@@ -184,26 +178,33 @@ public abstract class ChartRendererBase extends RendererBase {
 
     }
     
+    /**
+     * Converts class name of data type used in axes to shorter string representation
+     * ie. class java.lang.String -> string
+     * @param c
+     * @return
+     */
+    public String axisDataTypeToString(Class c){
+    	if(c == String.class){
+    		return "string";
+    	}
+    	else if(c == Number.class){
+    		return "number";
+    	}
+    	else if(c ==  Date.class){
+    		return "date";
+    	}
+    	else{
+    		return c.getName();
+    	}
+    }
+    
+    
     public JSONObject getParticularSeriesHandler(FacesContext context,UIComponent component){
         return (JSONObject) component.getAttributes().get("handlers");
     };
     
-    public JSFunctionDefinition createEventFunction(FacesContext context, UIComponent component){
-        Map<String,Object> params = new HashMap<String, Object>();
-        params.put(getFieldId(component, SERIES_INDEX), new JSReference(SERIES_INDEX));
-        params.put(getFieldId(component, POINT_INDEX), new JSReference(POINT_INDEX));
-        params.put(getFieldId(component, X_VALUE), new JSReference(X_VALUE));
-        params.put(getFieldId(component, Y_VALUE), new JSReference(Y_VALUE));
-        params.put(getFieldId(component, EVENT_TYPE), new JSReference(EVENT_TYPE));
-        
-        
-        AjaxFunction ajaxFce = AjaxRendererUtils.buildAjaxFunction(context, component);
-        ajaxFce.getOptions().getParameters().putAll(params);
-        
-        return new JSFunctionDefinition("event",EVENT_TYPE,SERIES_INDEX,
-                POINT_INDEX,X_VALUE,Y_VALUE).addToBody(ajaxFce);
-    }
-    
+       
     /**
      * Method creates unique identifier for request parameter.
      *
@@ -212,7 +213,7 @@ public abstract class ChartRendererBase extends RendererBase {
      * @return
      */
     public String getFieldId(UIComponent component, String attribute) {
-        return component.getClientId() + "-" + attribute;
+        return component.getClientId()  + attribute;
     }
 
     /**

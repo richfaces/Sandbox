@@ -133,7 +133,42 @@ public class ChartTest {
 
 		String expected =  Integer.toString(xValInt)  +
 				','+ Double.toString(chtestjs.pointY("frm:chart", 0, 0));
+		
+  
 		Assert.assertEquals(expected, clickSpan.getText());
 	}
+	
+	@FindBy(id="frm:msg")
+	WebElement msg;
+	
+	@RunAsClient
+	@Test
+	public void ServerSideClick(){
+		browser.get(deploymentUrl.toExternalForm());
+
+		Action click = builder.moveToElement(chartCanvas,
+				chtestjs.pointXPos("frm:chart", 0, 0),
+				chtestjs.pointYPos("frm:chart", 0, 0))
+				.click().build();
+
+		click.perform();
+
+		int seriesIndex = 0;
+		int pointIndex = 0;
+		//crop decimal places
+		double xVal = chtestjs.pointX("frm:chart", seriesIndex, pointIndex);
+		int xValInt = (int) xVal;
+
+		String expected = "Server's speaking:Point with index "+pointIndex +
+				"within series "+seriesIndex+" was clicked. Point coordinates [" +
+				Integer.toString(xValInt)  +','
+				+ Double.toString(chtestjs.pointY("frm:chart", 0, 0))+"]";    
+				
+		
+  
+		Assert.assertEquals(expected, msg.getText());
+	}
+	
+	
 
 }
