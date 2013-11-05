@@ -12,15 +12,11 @@
         <cdk:component-base-class>org.richfaces.sandbox.chart.component.AbstractChart</cdk:component-base-class>
 
 
-        <cdk:resource-dependency library="javax.faces" name="jsf.js"/>
-        <cdk:resource-dependency name="jquery.js"/>
+        <cdk:resource-dependency library="org.richfaces" name="ajax.reslib" />
+        
         <cdk:resource-dependency library="com.jqueryui" name="jquery.ui.core.js"/>
         <cdk:resource-dependency library="com.jqueryui" name="jquery.ui.widget.js"/>
         
-        
-        <cdk:resource-dependency name="richfaces.js"/>
-        <cdk:resource-dependency name="richfaces-event.js"/>
-        <cdk:resource-dependency name="richfaces-base-component.js"/>
         <cdk:resource-dependency library="flot" name="jquery.flot.js"/>
         <cdk:resource-dependency library="flot" name="jquery.flot.categories.js"/>
         <cdk:resource-dependency library="flot" name="jquery.flot.pie.js"/>
@@ -53,7 +49,7 @@
 	            //<![CDATA[  
 	                    $(document.getElementById("#{clientId}")).chartBridge(
 	                                   $.extend({
-		                                    handlers: $.extend({}, #{toScriptArgs(events)}),
+		                                    handlers: $.extend(#{toScriptArgs(events)}),
 		                                    particularSeriesHandlers: #{getParticularSeriesHandler(facesContext,component)},
 		                                    data: #{getData(facesContext,component)},
 	                                    },
