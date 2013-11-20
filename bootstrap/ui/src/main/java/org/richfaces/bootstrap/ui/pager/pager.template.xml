@@ -1,0 +1,31 @@
+<cdk:root xmlns="http://jboss.org/schema/richfaces/cdk/xhtml-el"
+          xmlns:cdk="http://jboss.org/schema/richfaces/cdk/core"
+          xmlns:c="http://jboss.org/schema/richfaces/cdk/jstl/core"
+          xmlns:cc="http://jboss.org/schema/richfaces/cdk/jsf/composite">
+
+    <cc:interface>
+        <cdk:class>org.richfaces.bootstrap.ui.pager.PagerRenderer</cdk:class>
+        <cdk:superclass>org.richfaces.bootstrap.ui.pager.PagerRendererBase</cdk:superclass>
+        <cdk:renderer-type>org.richfaces.bootstrap.PagerRenderer</cdk:renderer-type>
+        <cdk:component-base-class>org.richfaces.bootstrap.ui.pager.AbstractPager</cdk:component-base-class>
+        <cdk:renders-children>true</cdk:renders-children>
+    </cc:interface>
+
+    <cc:implementation>
+        <ul id="#{clientId}" class="pager #{component.styleClass}">
+            <c:forEach var="child" items="#{component.children}">
+                <c:choose>
+                    <c:when test="#{component.isPagerItem(child)}">
+                        <cdk:call expression="child.encodeAll(facesContext)"/>
+                    </c:when>
+                    <c:otherwise>
+                        <li>
+                            <cdk:call expression="child.encodeAll(facesContext)"/>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>
+        </ul>
+    </cc:implementation>
+
+</cdk:root>
